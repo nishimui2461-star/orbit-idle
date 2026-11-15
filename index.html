@@ -1,0 +1,267 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>ORBIT IDLE 2.7</title><style>
+/* Prevent double-tap zoom on iPhone without interfering with tap/hold handlers. */
+html{touch-action:manipulation;-webkit-text-size-adjust:100%}button,[role="button"],.star{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+
+:root{color-scheme:dark;--bg:#0c1011;--panel:#171e20;--edge:#34443b;--green:#b9f39b;--muted:#9caea5}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 12%,#1b3027,#0c1011 60%);color:#e9f3e9;font:15px system-ui,-apple-system,sans-serif}main{max-width:760px;margin:auto;padding:22px 15px 70px}header{display:flex;justify-content:space-between;align-items:center}h1{font-size:19px;letter-spacing:2px;color:var(--green)}h2{font-size:17px;margin:0 0 15px}small,.muted{color:var(--muted)}.panel{background:#171e20e8;border:1px solid var(--edge);border-radius:18px;padding:18px;margin:15px 0}.hero{text-align:center;padding:25px 12px}.stat{font-size:39px;font-weight:700;overflow-wrap:anywhere}.green{color:var(--green)}.star{width:175px;height:175px;border-radius:50%;border:1px solid #baf5a8;background:radial-gradient(circle at 30% 25%,#e2ffca,#9ce7a4 55%,#428d67);box-shadow:0 0 55px #a4efb04a;display:block;margin:24px auto;cursor:pointer;touch-action:manipulation;color:#163526;font-size:60px;transition:transform .08s}.star:active{transform:scale(.94)}button,select,input{font:inherit}button{border:1px solid #57765b;border-radius:11px;background:#273b2b;color:#d7ffca;padding:11px 13px;cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}.tabs{display:flex;gap:8px;overflow-x:auto}.tabs button{flex:1;white-space:nowrap}.tabs .active{background:#b9f39b;color:#102017}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #2a3732}.row:last-child{border:0}.row button{min-width:110px}.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:grid;gap:6px;margin:12px 0}select,input{width:100%;padding:11px;border:1px solid #465a4b;border-radius:10px;background:#0f1715;color:#f0fff0}.pill{padding:5px 10px;border:1px solid #4a6a4c;border-radius:50px;color:var(--green);font-size:12px}.hidden{display:none}.note{font-size:12px;color:#a9bcb1;line-height:1.6}#toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:#c6f4b2;color:#122317;padding:10px 17px;border-radius:30px;display:none;z-index:2}label{color:#c9decf}
+html{touch-action:pan-y} body{touch-action:pan-y}body{overscroll-behavior-x:none;overflow-x:hidden}button{user-select:none;-webkit-user-select:none} .star{touch-action:none;user-select:none;-webkit-user-select:none} .star.stage1{filter:hue-rotate(25deg)}.star.stage2{filter:hue-rotate(65deg)}.star.stage3{filter:hue-rotate(110deg)}.star.stage4{filter:hue-rotate(155deg)}.star.stage5{filter:hue-rotate(195deg)}.star.stage6{filter:hue-rotate(230deg)}.star.stage7{filter:hue-rotate(280deg)}.star.stage8{filter:hue-rotate(320deg);box-shadow:0 0 90px #e6ff9a}#soundPanel{font-size:13px}#soundPanel label{display:flex;align-items:center;gap:8px;margin:8px 0}#soundPanel input[type=checkbox]{width:auto}#soundPanel input[type=range]{width:100%} </style><style>
+/* 3.0 visual additions, preserve existing star and sound controls */
+main{max-width:800px}body{background:#101418;color:#eef0ef}.panel{background:#171d21;border-color:#303c43}.tabs{position:sticky;top:0;z-index:10;background:#101418;padding:10px 0;gap:5px}.tabs button{font-size:12px;padding:11px 7px;min-width:0}.building-row{padding:18px 0;justify-content:flex-start;gap:14px}.building-row>div:nth-child(2){flex:1;min-width:0}.building-row strong{font-size:17px}.building-symbol{width:54px;height:54px;flex:none;border-radius:14px;display:grid;place-items:center;background:#23372e;color:#c7f5a5;font-size:29px}.building-row:nth-child(3n+2) .building-symbol{background:#29243c;color:#c6a4f4}.building-row:nth-child(3n+3) .building-symbol{background:#263746;color:#9edaf4}.building-row button{min-width:106px;background:#293c28;border-color:#5d7954;color:#c5f49f;font-size:16px}.building-row button small{display:block;font-size:11px;margin-top:4px}.research-card{display:flex;align-items:center;gap:14px;border:1px solid #354249;border-radius:17px;padding:20px 14px;margin:12px 0;background:#1a2227;min-height:110px}.research-symbol{font-size:25px;color:#bdf3a5;width:30px;text-align:center}.research-body{flex:1;min-width:0}.research-body strong{font-size:17px}.research-body .muted{font-size:13px;margin-top:9px}.research-card button{border:0;background:transparent;color:#c0f59e;min-width:66px}.research-card button:disabled{opacity:.6}.research-card.research-max{opacity:.42;background:#13191d}.research-card.research-max button{color:#bdf3a5;opacity:1;cursor:default}.rebirth-hero{text-align:center;padding:35px 8px 25px}.rebirth-star{font-size:85px;color:#c6a9ff;margin:8px auto 36px}.rebirth-kicker{letter-spacing:4px;color:#b9f39b;font-size:11px}.rebirth-hero h2{font-size:28px;margin:35px 0 20px}.rebirth-hero p{line-height:1.9;color:#a8b3b8}.rebirth-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center;margin:20px 0 25px}.rebirth-stats small{display:block;color:#9daeb6}.rebirth-stats strong{display:block;color:#c5a9f6;font-size:23px;margin-top:8px;overflow-wrap:anywhere}#prestigeButton{display:block;margin:10px auto 24px;background:#c5f49f;color:#162416;border:0;font-size:20px;font-weight:700;padding:18px 38px}.evolution-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}.evolution-card{border:1px solid #354249;background:#11191d;border-radius:13px;padding:14px 5px;display:grid;gap:6px;justify-items:center;color:#778780}.evolution-card span{font-size:27px}.evolution-card small{font-size:11px}.evolution-card.achieved{color:#b9f39b;border-color:#536f50;background:#1e2a22}.galaxy-shop{margin-top:24px;padding:15px;border:1px solid #675384;border-radius:16px;background:#1b1927}.galaxy-shop h2{color:#d9c0ff}.galaxy-item{display:flex;align-items:center;gap:10px;border:1px solid #514764;border-radius:12px;padding:12px;margin:10px 0;background:#222033}.galaxy-item .info{flex:1;min-width:0}.galaxy-item small{display:block;color:#abb3bc;margin-top:4px}.galaxy-item button{background:#483963;border-color:#8266b3;color:#eee1ff;min-width:86px}.galaxy-item button:disabled{opacity:.45}#buildings{margin-top:14px}@media(max-width:390px){.tabs button{font-size:11px;padding:10px 4px}.building-row strong{font-size:14px}.building-symbol{width:42px;height:42px;font-size:24px}.building-row button{min-width:90px;font-size:13px}}
+</style></head><body><main><header><h1 id="adminTitle" style="touch-action:manipulation;user-select:none">✳ ORBIT IDLE <small>3.7</small></h1><span class="pill" id="saveStatus">● 自動セーブ</span></header><p class="muted">小さな光から、果てしない宇宙へ。</p><section class="panel hero"><small>YOUR UNIVERSE</small><div style="margin-top:12px">スターダスト</div><div class="stat" id="dust">0</div><div class="green" id="rate">+0 / 秒</div><button class="star" id="star" aria-label="星をタップ">✹</button><div id="tapInfo" class="muted">タップ +1</div><p class="green" id="bonus">転生ボーナス ×1</p></section><details id="soundPanel" class="panel"><summary>♫ サウンド設定</summary><label><input type="checkbox" id="bgmOn"> BGM</label><label><input type="checkbox" id="sfxOn"> 効果音</label><label>音量 <input type="range" id="soundVolume" min="0" max="100" value="35"></label><small>音は最初のタップで開始。iPhoneでは画面を閉じると音声が停止する場合があります。</small></details><div class="panel" style="text-align:center"><strong id="evolutionName">星の進化 1 / 9</strong><div class="muted" id="evolutionNext">累計ダストで進化を解放。転生しても記録は残る。</div><div id="evolutionCards" class="evolution-grid"></div></div><nav class="tabs"><button data-tab="build" class="active">星を育てる</button><button data-tab="research">研究</button><button data-tab="auto">自動化</button><button data-tab="prestige">転生</button><button data-tab="ascension">アセンション</button><button data-tab="records">記録</button></nav><section id="build" class="panel"><h2>光を生むもの</h2><div class="controls"><button id="buyOne">購入 ×1</button><button id="buyMax">購入 MAX</button></div><div id="buildings"></div></section><section id="research" class="panel hidden"><h2>✧ 星の研究</h2><p class="note">スターダストで研究を強化。長押し・自動購入に対応。最大レベルに達するとMAXになります。</p><div id="researchList"></div></section><section id="auto" class="panel hidden"><h2>⚙ 自動購入ルール</h2><p class="note">研究と銀河ショップも自動購入に対応。複数ルールを上から順に実行。各ルールの購入対象・条件・優先順位・間隔を自由に設定できる。</p><div id="rules"></div><button id="addRule">＋ ルールを追加</button></section><section id="prestige" class="panel hidden"><div class="rebirth-hero"><div class="rebirth-star">✺</div><div class="rebirth-kicker">A NEW BEGINNING</div><h2>終わりは、はじまり。</h2><p>転生するとスターダストと設備がリセットされ、永久的な生産倍率を獲得します。</p></div><div class="rebirth-stats"><div><small>銀河ポイント</small><strong id="prestigeInfo"></strong></div><div><small>永続倍率</small><strong id="prestigeMultiplier"></strong></div></div><button id="prestigeButton">銀河転生する</button><div class="galaxy-shop"><h2>✦ 銀河ショップ</h2><p class="note">銀河ポイントを消費して永続強化！ボタン長押しで連続購入。自動化タブから自動購入も設定できます。</p><p class="green" id="galaxyBalance"></p><div id="galaxyShopList"></div></div><div class="field"><label><input type="checkbox" id="autoPrestige" style="width:auto"> 自動転生を有効にする</label><label>転生可能ポイントの条件</label><input id="prestigeThreshold" value="10" inputmode="decimal"></div><p class="note">自動転生は、獲得予定の転生ポイントが指定値以上のとき実行。</p></section><section id="ascension" class="panel hidden"><div class="rebirth-hero"><div class="rebirth-star">✧</div><div class="rebirth-kicker">BEYOND THE GALAXY</div><h2>宇宙を超えて、さらに先へ。</h2><p>累計銀河ポイントが1.00e3以上になるとアセンションできます。銀河ポイント・銀河ショップ・研究・設備はリセットされますが、アセンション強化は永続します。</p></div><div class="rebirth-stats"><div><small>累計銀河ポイント</small><strong id="ascGalaxy">0</strong></div><div><small>獲得予定AP</small><strong id="ascGain">0</strong></div></div><button id="ascendButton" style="display:block;margin:12px auto 24px;background:#c8a8ff;color:#1b1229;border:0;padding:18px 30px;font-weight:bold;font-size:18px">アセンションする</button><div class="galaxy-shop"><h2>✧ アセンションショップ</h2><p class="note">アセンションポイント（AP）で永続強化。転生しても消えません。</p><p id="ascBalance" class="green"></p><div id="ascShop"></div></div></section><section id="records" class="panel hidden"><h2>📊 記録とセーブ</h2><div id="stats"></div><div class="controls"><button id="export">セーブを書き出す</button><button id="import">セーブを読み込む</button></div><textarea id="saveText" style="width:100%;height:90px;margin-top:12px;background:#0d1612;color:#e5ffe3;border:1px solid #465a4b;border-radius:10px;padding:10px" placeholder="ここにセーブ文字列を貼り付け"></textarea><p class="note">セーブはこのブラウザのローカルストレージに保存されます。ブラウザのデータを消す前に書き出してください。</p><button id="reset">ゲームを初期化</button></section><div id="adminOverlay" class="hidden" style="position:fixed;inset:0;background:#000c;z-index:9999;display:none;align-items:center;justify-content:center;padding:16px"><div style="width:min(100%,430px);background:#17211d;border:1px solid #9fea9a;border-radius:18px;padding:20px;max-height:90vh;overflow:auto"><div style="display:flex;justify-content:space-between;align-items:center"><h2>🔐 管理者モード</h2><button id="adminClose">閉じる</button></div><div id="adminAuth"><p id="adminHint">管理者コードを入力</p><input id="adminCode" type="password" autocomplete="off" placeholder="管理者コード" style="width:100%;padding:12px;margin-bottom:12px"><button id="adminLogin">確認</button></div><div id="adminControls" style="display:none"><label for="adminSpeed">ゲーム速度倍率（自由入力）</label><input id="adminSpeed" type="number" min="0.01" max="1000000000" step="any" inputmode="decimal" value="1" style="width:100%;padding:12px;margin:10px 0;background:#0c1612;color:#fff;border:1px solid #789b7e;border-radius:8px"><div style="display:flex;gap:8px;flex-wrap:wrap"><button id="adminApply">速度を適用</button><button id="adminNormal">1倍に戻す</button></div><p id="adminCurrent" class="muted">現在 1倍速</p><p class="muted">生産速度と自動購入の進行に反映。大きすぎる倍率では処理負荷を抑えるため購入処理を制限します。</p></div></div></div><div id="toast"></div></main><script>
+/* Compact logarithmic-decimal representation: mantissa * 10^exponent. */
+const N={parse(v){if(typeof v==='object'&&v!==null&&'m'in v)return N.norm(v.m,v.e);let s=String(v??0).trim();let a=s.match(/^([+-]?(?:\d+(?:\.\d*)?|\.\d+))(?:e([+-]?\d+))?$/i);if(!a)return {m:0,e:0};let n=Number(a[1]),e=Number(a[2]||0);return N.norm(n,e)},norm(m,e){if(!Number.isFinite(m)||!Number.isFinite(e)||m<=0)return {m:0,e:0};let x=Math.floor(Math.log10(m));m=m/10**x;e+=x;if(m>=10){m/=10;e++}if(m<1){m*=10;e--}return {m,e}},cmp(a,b){a=N.parse(a);b=N.parse(b);return a.e===b.e?Math.sign(a.m-b.m):Math.sign(a.e-b.e)},add(a,b){a=N.parse(a);b=N.parse(b);if(!a.m)return b;if(!b.m)return a;if(a.e<b.e)[a,b]=[b,a];return N.norm(a.m+b.m*10**Math.max(-320,b.e-a.e),a.e)},sub(a,b){a=N.parse(a);b=N.parse(b);if(N.cmp(a,b)<=0)return N.parse(0);return N.norm(a.m-b.m*10**Math.max(-320,b.e-a.e),a.e)},mul(a,b){a=N.parse(a);b=N.parse(b);return N.norm(a.m*b.m,a.e+b.e)},div(a,b){a=N.parse(a);b=N.parse(b);return b.m?N.norm(a.m/b.m,a.e-b.e):N.parse(0)},pow(a,p){a=N.parse(a);return a.m?N.norm(10**((Math.log10(a.m)*p)%1),Math.floor((Math.log10(a.m)+a.e)*p)):N.parse(0)},fmt(v){v=N.parse(v);if(!v.m)return '0';if(v.e<6)return (v.m*10**v.e).toLocaleString('en-US',{maximumFractionDigits:2});return v.m.toFixed(2)+'e'+v.e},log(v){v=N.parse(v);return v.m?Math.log10(v.m)+v.e:-Infinity}};
+const defs=[['光の粒子',15,0.2],['星屑採掘機',120,2],['星雲',1200,18],['惑星',15000,160],['恒星',2e5,1400],['星団',3e6,12000],['銀河',5e7,1e5],['銀河群',8e8,9e5],['超銀河団',1e10,8e6],['宇宙創生炉',2e11,7e7]];
+const defaultRule=()=>({id:Date.now()+Math.random(),enabled:true,target:'all',condition:'affordable',threshold:'1e10',percentage:10,priority:'cheap',interval:0.1,last:0});
+function initial(){return {dust:N.parse(0),total:N.parse(0),levels:Array(10).fill(0),galaxy:0,galaxySpent:0,galaxyUpgrades:Array(6).fill(0),ascensions:0,ascPoints:0,ascUpgrades:[0,0,0],prestiges:0,taps:0,autoprestige:false,prestigeThreshold:'10',rules:[defaultRule()],research:Array(6).fill(0),lastSaved:Date.now()}}
+let s=initial();try{const raw=localStorage.getItem('orbit-idle-2-save');if(raw){const p=JSON.parse(raw);s={...initial(),...p};s.dust=N.parse(p.dust);s.total=N.parse(p.total);s.levels=Array.from({length:10},(_,i)=>Math.max(0,Math.floor(Number(p.levels?.[i])||0)));s.galaxySpent=Math.max(0,Number(p.galaxySpent)||0);s.ascensions=Math.max(0,Math.floor(Number(p.ascensions)||0));s.ascPoints=Math.max(0,Math.floor(Number(p.ascPoints)||0));s.ascUpgrades=Array.from({length:3},(_,i)=>Math.max(0,Math.floor(Number(p.ascUpgrades?.[i])||0)));s.galaxyUpgrades=Array.from({length:6},(_,i)=>Math.max(0,Math.floor(Number(p.galaxyUpgrades?.[i])||0)));s.research=Array.from({length:6},(_,i)=>Math.min([30,30,10,8,10,12][i],Math.max(0,Math.floor(Number(p.research?.[i])||0))));s.rules=Array.isArray(p.rules)?p.rules.map(r=>({...defaultRule(),...r,last:0})): [defaultRule()];const away=Math.min((8+2*(s.research?.[3]||0))*3600,Math.max(0,(Date.now()-(p.lastSaved||Date.now()))/1000))*Math.pow(1.25,s.research?.[5]||0)*Math.pow(1.5,s.galaxyUpgrades?.[5]||0);s.dust=N.add(s.dust,N.mul(rate(),away));if(away>5)setTimeout(()=>toast('オフライン報酬 '+N.fmt(N.mul(rate(),away))),250)}}catch(e){console.warn(e)}
+let buyMode='one';const $=id=>document.getElementById(id),mult=()=> Math.pow(3,s.ascUpgrades?.[0]||0)*(1+s.galaxy*0.5)*Math.pow(1.25,s.research?.[0]||0)*Math.pow(2,s.galaxyUpgrades?.[0]||0),price=i=>N.mul(defs[i][1]*Math.pow(.95,s.research?.[2]||0)*Math.pow(.97,s.galaxyUpgrades?.[2]||0),N.pow(1.15,s.levels[i])),production=i=>N.mul(defs[i][2]*s.levels[i]*(1+(s.research?.[4]||0)*0.01*s.levels.reduce((a,b)=>a+b,0)),mult()),rate=()=>defs.reduce((a,_,i)=>N.add(a,production(i)),N.parse(0)),tapGain=()=>N.mul((1+Math.floor(s.taps/100))*Math.pow(1.5,s.research?.[1]||0)*Math.pow(2,s.galaxyUpgrades?.[1]||0)*Math.pow(3,s.ascUpgrades?.[1]||0),mult());
+function buy(i){let p=price(i);if(N.cmp(s.dust,p)<0)return false;s.dust=N.sub(s.dust,p);s.levels[i]++;return true}function eligible(i,r){let p=price(i);if(N.cmp(s.dust,p)<0)return false;if(r.condition==='threshold'&&N.cmp(s.dust,N.parse(r.threshold))<0)return false;if(r.condition==='percent'&&N.cmp(p,N.mul(s.dust,Math.max(0,Math.min(100,Number(r.percentage)||0))/100))>0)return false;return true}
+const researchMax=[30,30,10,8,10,12];
+function researchIsMax(i){return (s.research[i]||0)>=researchMax[i]}
+function buyResearch(i){if(researchIsMax(i))return false;let p=researchCost(i);if(N.cmp(s.dust,p)<0)return false;s.dust=N.sub(s.dust,p);s.research[i]++;return true}
+function runRule(r){
+ if(!r.enabled)return false;
+ if(r.target==='galaxy')return runGalaxyRule(r);
+ const isResearch=r.target==='research'||r.target==='allplus';
+ const isBuilding=r.target!=='research'&&r.target!=='galaxy';
+ let candidates=[];
+ if(isBuilding)defs.forEach((d,i)=>{if((r.target==='all'||r.target==='allplus'||r.target==='production'||r.target==='stars'&&i<5)&&eligible(i,r))candidates.push({type:'building',i,cost:price(i),level:s.levels[i],eff:N.div(N.mul(d[2],mult()),price(i))})});
+ if(isResearch)researchDefs.forEach((d,i)=>{if(researchIsMax(i))return;let p=researchCost(i);if(N.cmp(s.dust,p)<0)return;if(r.condition==='threshold'&&N.cmp(s.dust,N.parse(r.threshold))<0)return;if(r.condition==='percent'&&N.cmp(p,N.mul(s.dust,Math.max(0,Math.min(100,Number(r.percentage)||0))/100))>0)return;candidates.push({type:'research',i,cost:p,level:s.research[i],eff:N.parse(0)})});
+ if(r.priority==='cheap')candidates.sort((a,b)=>N.cmp(a.cost,b.cost));
+ if(r.priority==='level')candidates.sort((a,b)=>a.level-b.level);
+ if(r.priority==='efficiency')candidates.sort((a,b)=>N.cmp(b.eff,a.eff));
+ const c=candidates[0];if(!c)return false;
+ return c.type==='research'?buyResearch(c.i):buy(c.i);
+}
+function points(){let l=N.log(s.total);return l>=5?Math.max(0,Math.floor(10**Math.min(10,(l-5)/3))):0}function prestige(){let p=points();if(p<1)return false;p=Math.floor(p*Math.pow(1.25,s.galaxyUpgrades?.[4]||0));p=Math.floor(p*Math.pow(2,s.ascUpgrades?.[2]||0));s.galaxy+=p;s.prestiges++;s.dust=N.parse(0);s.total=N.parse(0);s.levels=Array(10).fill(0);toast('銀河ポイント +'+fmtGP(p));return true}
+function toast(t){let el=$('toast');el.textContent=t;el.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>el.style.display='none',2200)}
+const researchDefs=[['✳','星光精製','全設備の生産 ×1.25','100',1.8],['✧','指先の共鳴','タップ獲得 ×1.50','75',1.85],['⌘','建設効率','設備価格 ×0.95','500',2],['◷','時空の貯蔵庫','放置報酬の上限 +2時間','1500',2.1],['◎','軌道ネットワーク','設備1個につき生産 +1%','5000',2.3],['☾','夢見る星','放置報酬 ×1.25','2500',2.2]];
+function researchCost(i){return N.mul(researchDefs[i][3]*Math.pow(.9,s.galaxyUpgrades?.[3]||0),N.pow(researchDefs[i][4],s.research[i]||0))}
+function researchEffect(i){const lv=s.research[i]||0;switch(i){
+case 0:return '全設備の生産 ×'+Math.pow(1.25,lv).toFixed(2);
+case 1:return 'タップ獲得 ×'+Math.pow(1.5,lv).toFixed(2);
+case 2:return '設備の価格 '+(100*Math.pow(.95,lv)).toFixed(1)+'%';
+case 3:return '放置報酬の上限 '+(8+2*lv)+'時間';
+case 4:return '設備1個につき全生産 +'+lv+'%';
+case 5:return '放置報酬 ×'+Math.pow(1.25,lv).toFixed(2);
+}}
+function drawResearch(){const root=$('researchList');root.innerHTML='';researchDefs.forEach((d,i)=>{
+let max=researchIsMax(i),row=document.createElement('div');row.className='research-card'+(max?' research-max':'');
+row.innerHTML='<div class="research-symbol">'+d[0]+'</div><div class="research-body"><strong>'+d[1]+' <small>Lv.'+(s.research[i]||0)+'</small></strong><div class="muted">'+researchEffect(i)+(max?'（最大）':' → 次のレベルで強化')+'</div></div>';
+let b=document.createElement('button');b.textContent=max?'MAX':N.fmt(researchCost(i));b.disabled=max||N.cmp(s.dust,researchCost(i))<0;
+b.onclick=()=>{if(buyResearch(i)){draw();save()}};row.append(b);root.append(row)})}
+function drawBuildings(){let root=$('buildings');root.innerHTML='';defs.forEach((d,i)=>{let row=document.createElement('div');row.className='row building-row';let label=document.createElement('div');label.innerHTML='<strong>'+d[0]+'</strong><div class="muted">Lv. '+s.levels[i]+'</div><div class="muted">購入で +'+N.fmt(N.mul(defs[i][2],mult()))+' / 秒</div>';let symbol=document.createElement('div');symbol.className='building-symbol';symbol.textContent=['✧','◌','✺','◉','✶','✴','◍','❖','✦','☀'][i];row.append(symbol);let b=document.createElement('button');b.innerHTML=N.fmt(price(i))+'<small>購入 ×'+(buyMode==='max'?'MAX':'1')+'</small>';b.disabled=N.cmp(s.dust,price(i))<0;b.onclick=()=>{let n=0;do{if(!buy(i))break;n++}while(buyMode==='max'&&n<1000);draw();};row.append(label,b);root.append(row)})}
+function drawRules(){let root=$('rules');root.innerHTML='';s.rules.forEach((r,idx)=>{let panel=document.createElement('div');panel.className='panel';panel.style.margin='12px 0';panel.innerHTML=`<div class="row"><strong>ルール ${idx+1}</strong><button data-key="remove">削除</button></div><div class="field"><label><input type="checkbox" data-key="enabled" style="width:auto" ${r.enabled?'checked':''}> 有効</label></div><div class="field"><label>対象</label><select data-key="target"><option value="all">全設備</option><option value="stars">星の強化（前半5種）</option><option value="production">生産設備（全10種）</option><option value="research">研究（全6種）</option><option value="allplus">設備＋研究（全部）</option><option value="galaxy">銀河ショップ（全6種）</option></select></div><div class="field"><label>購入条件</label><select data-key="condition"><option value="affordable">購入可能なら</option><option value="threshold">所持資源が指定値以上</option><option value="percent">購入費用が所持量の指定割合以下</option></select></div><div class="field"><label>しきい値（例 1e100）</label><input data-key="threshold" value="${String(r.threshold).replace(/["<>]/g,'')}" /></div><div class="field"><label>使用割合（%）</label><input data-key="percentage" type="number" min="0" max="100" value="${r.percentage}"></div><div class="field"><label>優先順位</label><select data-key="priority"><option value="cheap">最安値</option><option value="efficiency">生産効率</option><option value="level">低レベル</option></select></div><div class="field"><label>間隔</label><select data-key="interval"><option value="0">0秒（最速）</option><option value="0.1">0.1秒</option><option value="0.5">0.5秒</option><option value="1">1秒</option></select></div>`;root.append(panel);panel.querySelectorAll('[data-key]').forEach(el=>{let k=el.dataset.key;if(k==='remove'){el.onclick=()=>{s.rules.splice(idx,1);drawRules();save()};return}if(el.tagName==='SELECT')el.value=String(r[k]);el.onchange=()=>{r[k]=el.type==='checkbox'?el.checked:k==='interval'||k==='percentage'?Number(el.value):el.value;save()}})})}
+
+// Permanent galaxy-point shop. galaxy is lifetime earned, galaxySpent tracks purchases.
+const galaxyDefs=[
+ ['✦','銀河の炉心','全生産 ×2',2,2.5],
+ ['✧','星の指先','タップ獲得 ×2',2,2.5],
+ ['⌘','宇宙建築学','設備価格 −3%',3,2.3],
+ ['☷','研究の知恵','研究価格 −10%',4,2.5],
+ ['✺','転生の共鳴','転生獲得ポイント ×1.25',5,3],
+ ['◷','時間の結晶','オフライン報酬 ×1.5',5,2.8]
+];
+// Display galaxy points in scientific notation without changing stored values.
+function fmtGP(value){
+ const n=Number(value);
+ if(!Number.isFinite(n))return String(value);
+ if(n===0)return '0e0';
+ const exp=Math.floor(Math.log10(Math.abs(n)));
+ const mantissa=n/Math.pow(10,exp);
+ return mantissa.toFixed(2)+'e'+exp;
+}
+function galaxyAvailable(){return Math.max(0,Math.floor((Number(s.galaxy)||0)-(Number(s.galaxySpent)||0)))}
+function galaxyCost(i){const level=s.galaxyUpgrades?.[i]||0;return Math.max(1,Math.ceil(galaxyDefs[i][3]*Math.pow(galaxyDefs[i][4],level)))}
+function runGalaxyRule(r){
+ const balance=galaxyAvailable();
+ if(balance<=0)return false;
+ if(r.condition==='threshold' && balance < Number(r.threshold))return false;
+ const candidates=galaxyDefs.map((d,i)=>({i,cost:galaxyCost(i),level:s.galaxyUpgrades[i]})).filter(x=>x.cost<=balance && (r.condition!=='percent'||x.cost<=balance*Math.max(0,Math.min(100,Number(r.percentage)||0))/100));
+ if(r.priority==='level')candidates.sort((a,b)=>a.level-b.level||a.cost-b.cost);
+ else candidates.sort((a,b)=>a.cost-b.cost);
+ const chosen=candidates[0];
+ if(!chosen)return false;
+ s.galaxySpent+=chosen.cost;
+ s.galaxyUpgrades[chosen.i]++;
+ return true;
+}
+function buyGalaxyUpgrade(i){const cost=galaxyCost(i);if(galaxyAvailable()<cost)return false;s.galaxySpent+=cost;s.galaxyUpgrades[i]++;save();draw();toast(galaxyDefs[i][1]+' Lv.'+s.galaxyUpgrades[i]);return true}
+function drawGalaxyShop(){const list=$('galaxyShopList');if(!list)return;$('galaxyBalance').textContent='使用可能：'+fmtGP(galaxyAvailable())+' GP ／ 累計獲得：'+fmtGP(s.galaxy)+' GP';const fragment=document.createDocumentFragment();galaxyDefs.forEach((d,i)=>{const row=document.createElement('div');row.className='galaxy-item';const info=document.createElement('div');info.className='info';const name=document.createElement('strong');name.textContent=d[0]+' '+d[1]+' Lv.'+(s.galaxyUpgrades[i]||0);const desc=document.createElement('small');desc.textContent=d[2]+'（永続）';info.append(name,desc);const button=document.createElement('button');button.textContent=fmtGP(galaxyCost(i))+' GP';button.disabled=galaxyAvailable()<galaxyCost(i);button.dataset.galaxyIndex=String(i);button.onclick=()=>buyGalaxyUpgrade(i);row.append(info,button);fragment.append(row)});list.replaceChildren(fragment)}
+
+// Ascension is the second prestige layer. Galaxy earned is reset, ascension upgrades persist.
+const ascDefs=[['✦','超越する炉心','全生産 ×3'],['✧','永遠の指先','タップ獲得 ×3'],['✺','銀河の導き','銀河ポイント獲得 ×2']];
+function ascGain(){const g=Math.max(0,Number(s.galaxy)||0);return g>=1000?Math.max(1,Math.floor(Math.sqrt(g/1000))):0}
+function ascCost(i){return Math.ceil((i+1)*Math.pow(3,s.ascUpgrades[i]||0))}
+function buyAsc(i){const cost=ascCost(i);if(s.ascPoints<cost)return;s.ascPoints-=cost;s.ascUpgrades[i]++;save();draw()}
+function drawAscension(){if($('ascension').classList.contains('hidden'))return;$('ascGalaxy').textContent=fmtGP(s.galaxy);$('ascGain').textContent=fmtGP(ascGain())+' AP';$('ascendButton').disabled=ascGain()<1;$('ascBalance').textContent='所持：'+fmtGP(s.ascPoints)+' AP ／ アセンション回数：'+s.ascensions;const root=$('ascShop');root.replaceChildren();ascDefs.forEach((d,i)=>{const row=document.createElement('div');row.className='galaxy-item';const info=document.createElement('div');info.className='info';const name=document.createElement('strong');name.textContent=d[0]+' '+d[1]+' Lv.'+s.ascUpgrades[i];const detail=document.createElement('small');detail.textContent=d[2]+'（永続）';info.append(name,detail);const btn=document.createElement('button');btn.textContent=fmtGP(ascCost(i))+' AP';btn.disabled=s.ascPoints<ascCost(i);btn.onclick=()=>buyAsc(i);row.append(info,btn);root.append(row)})}
+function draw(){ $('dust').textContent=N.fmt(s.dust);$('rate').textContent='+'+N.fmt(rate())+' / 秒';$('tapInfo').textContent='タップ +'+N.fmt(tapGain());$('bonus').textContent='転生ボーナス ×'+mult().toFixed(1);$('prestigeInfo').textContent=fmtGP(galaxyAvailable())+' / +'+fmtGP(Math.floor(points()*Math.pow(1.25,s.galaxyUpgrades?.[4]||0)));$('prestigeButton').disabled=points()<1;$('prestigeMultiplier').textContent='×'+mult().toFixed(2);drawGalaxyShop();drawAscension();$('stats').innerHTML='<p>タップ回数: '+s.taps+'</p><p>転生回数: '+s.prestiges+'</p><p>銀河ポイント: '+s.galaxy+'</p><p>現在の転生内での累計生産: '+N.fmt(s.total)+'</p>';drawBuildings();if(!$('research').classList.contains('hidden'))drawResearch();drawEvolution()}
+function drawEvolution(){const box=$('evolutionCards');if(!box)return;box.innerHTML='';const lv=Math.min(9,Math.max(1,Math.floor(Math.max(0,N.log(s.total))/12)+1));for(let i=1;i<=9;i++){let el=document.createElement('div');el.className='evolution-card'+(i<=lv?' achieved':'');el.innerHTML='<span>'+['✦','✧','◇','✳','✺','✷','✴','✹','☀'][i-1]+'</span><small>進化 '+i+'</small>';box.append(el)}$('evolutionName').textContent='星の進化 '+lv+' / 9';}
+function save(){s.lastSaved=Date.now();try{localStorage.setItem('orbit-idle-2-save',JSON.stringify(s));$('saveStatus').textContent='● 保存済み'}catch(e){$('saveStatus').textContent='⚠ 保存失敗'}}
+$('star').onclick=()=>{let x=tapGain();s.dust=N.add(s.dust,x);s.total=N.add(s.total,x);s.taps++;draw()};$('buyOne').onclick=()=>{buyMode='one';$('buyOne').style.background='#b9f39b';$('buyOne').style.color='#102017';$('buyMax').removeAttribute('style')};$('buyMax').onclick=()=>{buyMode='max';$('buyMax').style.background='#b9f39b';$('buyMax').style.color='#102017';$('buyOne').removeAttribute('style')};$('buyOne').click();document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));['build','research','auto','prestige','ascension','records'].forEach(id=>$(id).classList.toggle('hidden',id!==b.dataset.tab));if(b.dataset.tab==='auto')drawRules();draw()});$('addRule').onclick=()=>{s.rules.push(defaultRule());drawRules();save()};$('ascendButton').onclick=()=>{const gain=ascGain();if(gain<1)return;if(!confirm('銀河ポイント・銀河ショップ・研究・設備をリセットして '+gain+' APを獲得しますか？'))return;s.ascensions++;s.ascPoints+=gain;s.galaxy=0;s.galaxySpent=0;s.galaxyUpgrades=Array(6).fill(0);s.dust=N.parse(0);s.total=N.parse(0);s.levels=Array(10).fill(0);s.research=Array(6).fill(0);s.autoprestige=false;$('autoPrestige').checked=false;save();draw();toast('アセンション成功！ +'+gain+' AP')};$('prestigeButton').onclick=()=>{if(confirm('スターダストと設備をリセットして銀河転生しますか？')){prestige();draw();save()}};$('autoPrestige').checked=s.autoprestige;$('autoPrestige').onchange=e=>{s.autoprestige=e.target.checked;save()};$('prestigeThreshold').value=s.prestigeThreshold;$('prestigeThreshold').onchange=e=>{s.prestigeThreshold=e.target.value;save()};$('export').onclick=()=>{$('saveText').value=btoa(unescape(encodeURIComponent(JSON.stringify(s))));$('saveText').select();toast('セーブ文字列を表示しました')};$('import').onclick=()=>{try{let v=JSON.parse(decodeURIComponent(escape(atob($('saveText').value.trim()))));if(!v||!Array.isArray(v.levels)||!Array.isArray(v.rules))throw Error('invalid');if(!confirm('現在のセーブを上書きしますか？'))return;localStorage.setItem('orbit-idle-2-save',JSON.stringify(v));location.reload()}catch(e){toast('セーブ文字列が無効です')}};$('reset').onclick=()=>{if(confirm('全データを初期化します。よろしいですか？')&&confirm('本当に削除しますか？')){localStorage.removeItem('orbit-idle-2-save');location.reload()}};
+let last=performance.now(),frame=0;function tick(now){let dt=Math.min(1,(now-last)/1000);last=now;dt*=orbitAdminSpeed;let gain=N.mul(rate(),dt);s.dust=N.add(s.dust,gain);s.total=N.add(s.total,gain);s.rules.forEach(r=>{if(!r.enabled)return;const interval=Number(r.interval);if(interval===0){/* No timer delay: buy until no eligible item, capped for UI responsiveness. */for(let n=0;n<500;n++){if(!runSilentAutoRule(r))break;}r.last=0;}else{r.last=(r.last||0)+dt;const wait=Number.isFinite(interval)&&interval>0?interval:0.1;if(r.last>=wait){r.last%=wait;runSilentAutoRule(r)}}});if(s.autoprestige&&points()>=Math.max(1,Number(s.prestigeThreshold)||1))prestige();if(++frame%4===0)draw();requestAnimationFrame(tick)}document.addEventListener('visibilitychange',()=>{if(document.hidden)save();last=performance.now()});setInterval(save,10000);draw();drawRules();requestAnimationFrame(tick);
+
+// ORBIT IDLE 2.1 enhancements, preserving the existing save key.
+const audioPrefsKey='orbit-idle-2-audio';
+let audioPrefs={bgm:true,sfx:true,volume:35};try{Object.assign(audioPrefs,JSON.parse(localStorage.getItem(audioPrefsKey)||'{}'))}catch(e){}
+let audioCtx=null,melodyTimer=null,melodyStep=0;
+let lastAudioResume=0;
+function audioStart(){
+ try{
+  if(!audioCtx){
+   audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+   audioCtx.addEventListener('statechange',()=>{if(audioCtx.state==='running'&&audioPrefs.bgm)playMelody()});
+  }
+  if(audioCtx.state!=='running'){
+   const now=Date.now();
+   if(now-lastAudioResume>500){lastAudioResume=now;audioCtx.resume().catch(()=>{});}
+  }
+  if(!melodyTimer)melodyTimer=setInterval(playMelody,360);
+ }catch(e){}
+}
+function tone(freq,duration=.08,vol=.1,type='sine'){if(!audioCtx)return;try{let o=audioCtx.createOscillator(),g=audioCtx.createGain(),now=audioCtx.currentTime;o.type=type;o.frequency.setValueAtTime(freq,now);g.gain.setValueAtTime(Math.max(.0001,vol*audioPrefs.volume/100),now);g.gain.exponentialRampToValueAtTime(.0001,now+duration);o.connect(g);g.connect(audioCtx.destination);o.start(now);o.stop(now+duration+.02)}catch(e){}}
+function playMelody(){
+ if(!audioPrefs.bgm||document.hidden)return;
+ if(!audioCtx||audioCtx.state!=='running')return;
+ const notes=[220,0,329.63,0,293.66,392,0,261.63,0,329.63,440,0,392,0,293.66,0];
+ let n=notes[melodyStep++%notes.length];if(n)tone(n,.55,.045,'sine');
+}
+function soundEffect(kind){if(!audioPrefs.sfx)return;audioStart();tone(kind==='buy'?520:kind==='prestige'?180:740,kind==='prestige'?.4:.055,.09,kind==='buy'?'triangle':'sine')}
+function saveAudio(){localStorage.setItem(audioPrefsKey,JSON.stringify(audioPrefs))}
+$('bgmOn').checked=audioPrefs.bgm;$('sfxOn').checked=audioPrefs.sfx;$('soundVolume').value=audioPrefs.volume;
+$('bgmOn').onchange=e=>{audioPrefs.bgm=e.target.checked;saveAudio();audioStart()};$('sfxOn').onchange=e=>{audioPrefs.sfx=e.target.checked;saveAudio();audioStart()};$('soundVolume').oninput=e=>{audioPrefs.volume=Number(e.target.value);saveAudio()};
+// Keep existing click and purchase logic, and add sound without altering game data.
+$('star').addEventListener('click',()=>{audioStart();soundEffect('tap')});
+// Suppress purchase sound for automated purchases only.
+let autoPurchaseSilent=false;
+function runSilentAutoRule(rule){
+ autoPurchaseSilent=true;
+ try{return runRule(rule)}finally{autoPurchaseSilent=false}
+}
+const originalBuy=buy;buy=function(i){let ok=originalBuy(i);if(ok&&!autoPurchaseSilent&&(!buy.soundAt||performance.now()-buy.soundAt>90)){buy.soundAt=performance.now();soundEffect('buy')}return ok};
+const originalPrestige=prestige;prestige=function(){let ok=originalPrestige();if(ok)soundEffect('prestige');return ok};
+// Reliable iOS pointer/touch hold. Repeat directly rather than dispatching synthetic clicks.
+function collectStar(){const x=tapGain();s.dust=N.add(s.dust,x);s.total=N.add(s.total,x);s.taps++;soundEffect('tap');draw()}
+(function(){
+ const el=$('star');let timer=null,holding=false,repeated=false,delay=170;
+ function stop(){holding=false;if(timer!==null)clearTimeout(timer);timer=null}
+ function cycle(){if(!holding)return;collectStar();repeated=true;delay=Math.max(65,delay*.93);timer=setTimeout(cycle,delay)}
+ function start(e){if(e.type==='pointerdown'&&e.pointerType==='mouse'&&e.button!==0)return;if(holding)return;holding=true;repeated=false;delay=170;audioStart();timer=setTimeout(cycle,170);if(e.pointerId!==undefined&&el.setPointerCapture){try{el.setPointerCapture(e.pointerId)}catch(_){}}}
+ el.addEventListener('pointerdown',start,{passive:true});
+ ['pointerup','pointercancel','lostpointercapture'].forEach(t=>el.addEventListener(t,stop));
+ // Older Safari fallback where Pointer Events are unavailable.
+ if(!window.PointerEvent){el.addEventListener('touchstart',start,{passive:true});['touchend','touchcancel'].forEach(t=>el.addEventListener(t,stop))}
+ el.addEventListener('click',e=>{if(repeated){e.preventDefault();e.stopImmediatePropagation();repeated=false}},true);
+ window.addEventListener('blur',stop);
+})();
+// Building buttons are recreated on every draw, so delegate the hold behavior.
+let heldBuilding=null,buildingTimer=null,buildingDelay=300,buildingDidRepeat=false;
+function stopBuilding(){clearTimeout(buildingTimer);buildingTimer=null;heldBuilding=null}
+$('buildings').addEventListener('pointerdown',e=>{let btn=e.target.closest('button');if(!btn||btn.disabled)return;let row=btn.closest('.row');let index=Array.from($('buildings').children).indexOf(row);if(index<0)return;stopBuilding();heldBuilding=index;buildingDelay=300;buildingDidRepeat=false;const cycle=()=>{if(heldBuilding===null)return;if(!buy(heldBuilding)){stopBuilding();return}buildingDidRepeat=true;draw();buildingDelay=Math.max(55,buildingDelay*.83);buildingTimer=setTimeout(cycle,buildingDelay)};buildingTimer=setTimeout(cycle,buildingDelay)});
+['pointerup','pointercancel','pointerleave'].forEach(type=>$('buildings').addEventListener(type,stopBuilding));
+$('buildings').addEventListener('click',e=>{if(buildingDidRepeat&&e.target.closest('button')){e.preventDefault();e.stopImmediatePropagation();buildingDidRepeat=false}},true);
+// Research: hold a purchase button to buy repeatedly, accelerating while held.
+// Use event delegation because drawResearch recreates the buttons on every redraw.
+let heldResearch=null,researchTimer=null,researchDelay=300,researchRepeated=false;
+function stopResearch(){if(researchTimer!==null)clearTimeout(researchTimer);researchTimer=null;heldResearch=null}
+function purchaseResearch(i){return i>=0&&i<researchDefs.length?buyResearch(i):false}
+$('researchList').addEventListener('pointerdown',e=>{
+ const btn=e.target.closest('button');if(!btn||btn.disabled)return;
+ const card=btn.closest('.research-card');const i=Array.from($('researchList').children).indexOf(card);
+ if(i<0)return;stopResearch();heldResearch=i;researchRepeated=false;researchDelay=300;
+ const repeat=()=>{
+  if(heldResearch===null)return;
+  if(!purchaseResearch(heldResearch)){stopResearch();return}
+  researchRepeated=true;draw();save();
+  researchDelay=Math.max(55,researchDelay*.83);
+  researchTimer=setTimeout(repeat,researchDelay);
+ };
+ researchTimer=setTimeout(repeat,researchDelay);
+},{passive:true});
+['pointerup','pointercancel'].forEach(type=>document.addEventListener(type,stopResearch));
+$('researchList').addEventListener('pointerleave',stopResearch);
+$('researchList').addEventListener('click',e=>{
+ if(researchRepeated&&e.target.closest('button')){e.preventDefault();e.stopImmediatePropagation();researchRepeated=false}
+},true);
+// Galaxy shop: tap to buy once, hold to repeatedly buy with acceleration.
+// The list is rebuilt during draw, so handle pointer events on the stable parent.
+(()=>{
+ const root=$('galaxyShopList');
+ let active=-1,timer=null,delay=300,repeated=false;
+ const stop=()=>{if(timer!==null)clearTimeout(timer);timer=null;active=-1};
+ root.addEventListener('pointerdown',e=>{
+  const btn=e.target.closest('button[data-galaxy-index]');
+  if(!btn||btn.disabled)return;
+  stop();active=Number(btn.dataset.galaxyIndex);delay=300;repeated=false;
+  const cycle=()=>{
+   if(active<0)return;
+   const cost=galaxyCost(active);
+   if(galaxyAvailable()<cost){stop();return}
+   s.galaxySpent+=cost;s.galaxyUpgrades[active]++;
+   repeated=true;draw();save();
+   delay=Math.max(55,delay*.83);
+   timer=setTimeout(cycle,delay);
+  };
+  timer=setTimeout(cycle,300);
+ },{passive:true});
+ ['pointerup','pointercancel'].forEach(type=>document.addEventListener(type,stop));
+ root.addEventListener('pointerleave',stop);
+ root.addEventListener('click',e=>{
+  if(repeated&&e.target.closest('button')){e.preventDefault();e.stopImmediatePropagation();repeated=false}
+ },true);
+ window.addEventListener('blur',stop);
+})();
+// Nine permanent visual stages based on lifetime taps and galaxy progress.
+const stages=['原始の光','輝く星','青い恒星','赤色巨星','白色矮星','中性子星','超新星','銀河の核','宇宙の心臓'];
+function updateEvolution(){let score=Math.log10(1+Math.max(0,s.taps||0))+Math.log10(1+Math.max(0,s.galaxy||0))*1.2;let stage=Math.min(8,Math.floor(score/1.1));let star=$('star');star.className='star stage'+stage;star.textContent=['✹','✦','✶','✷','✸','✺','✴','✵','✹'][stage];$('evolutionName').textContent='星の進化 '+(stage+1)+' / 9 — '+stages[stage];$('evolutionNext').textContent=stage===8?'最終進化に到達！':'次の進化まで星をタップして育てよう'}
+const baseDraw=draw;draw=function(){baseDraw();updateEvolution()};updateEvolution();
+document.addEventListener('gesturestart',e=>e.preventDefault(),{passive:false});document.addEventListener('gesturechange',e=>e.preventDefault(),{passive:false});
+
+/* iOS Safari double-tap zoom guard: keep normal taps and vertical scrolling. */
+(function(){
+ let lastTime=0,lastX=0,lastY=0,lastTarget=null;
+ document.addEventListener('touchend',function(e){
+   if(e.changedTouches.length!==1 || e.touches.length!==0)return;
+   const t=e.changedTouches[0],now=Date.now();
+   const target=e.target.closest?.('button,.star,[role="button"]');
+   const doubleTap=target && lastTarget===target && now-lastTime<380 && Math.hypot(t.clientX-lastX,t.clientY-lastY)<45;
+   lastTime=now;lastX=t.clientX;lastY=t.clientY;lastTarget=target;
+   if(doubleTap){
+     e.preventDefault(); // prevent Safari's native double-tap zoom
+     // The cancelled touchend suppresses the second synthetic click, so restore it.
+     if(!target.disabled)target.click();
+   }
+ },{passive:false});
+ document.addEventListener('dblclick',function(e){
+   if(e.target.closest?.('button,.star,[role="button"]'))e.preventDefault();
+ },{passive:false});
+})();
+
+/* iOS may suspend WebAudio while the page remains visible. Retry on genuine interaction,
+   visibility/focus recovery, and a lightweight heartbeat. */
+function recoverBgm(){if(audioPrefs.bgm&&!document.hidden)audioStart()}
+document.addEventListener('pointerdown',recoverBgm,{passive:true});
+document.addEventListener('touchstart',recoverBgm,{passive:true});
+document.addEventListener('keydown',recoverBgm);
+document.addEventListener('visibilitychange',recoverBgm);
+window.addEventListener('focus',recoverBgm);
+window.addEventListener('pageshow',recoverBgm);
+setInterval(recoverBgm,2000);
+
+// Local-only admin access: five title taps, then a user-chosen code.
+let orbitAdminSpeed=1;
+try {const n=Number(localStorage.getItem('orbit-admin-speed'));if(Number.isFinite(n)&&n>=0.01&&n<=1e9)orbitAdminSpeed=n;}catch(e){}
+(function(){
+const overlay=document.getElementById('adminOverlay'), auth=document.getElementById('adminAuth'), controls=document.getElementById('adminControls');
+const code=document.getElementById('adminCode'), hint=document.getElementById('adminHint'), speed=document.getElementById('adminSpeed'), current=document.getElementById('adminCurrent');
+let taps=0, lastTap=0;
+const close=()=>{overlay.style.display='none';code.value='';};
+const update=()=>{speed.value=String(orbitAdminSpeed);current.textContent='現在 '+orbitAdminSpeed.toLocaleString('ja-JP')+'倍速';};
+function open(){overlay.style.display='flex';auth.style.display='block';controls.style.display='none';let exists=false;try{exists=!!localStorage.getItem('orbit-admin-code')}catch(e){}hint.textContent=exists?'管理者コードを入力':'初回設定：好きな管理者コードを決めて入力';code.focus();}
+document.getElementById('adminTitle').addEventListener('click',()=>{let now=Date.now();taps=(now-lastTap<1800)?taps+1:1;lastTap=now;if(taps>=5){taps=0;open();}});
+document.getElementById('adminClose').onclick=close;
+document.getElementById('adminLogin').onclick=()=>{const v=code.value;if(!v){hint.textContent='コードを入力してね';return;}let stored=null;try{stored=localStorage.getItem('orbit-admin-code')}catch(e){}if(!stored){if(v.length<4){hint.textContent='4文字以上で設定してね';return;}try{localStorage.setItem('orbit-admin-code',v)}catch(e){}stored=v;}if(v!==stored){hint.textContent='コードが違います';return;}auth.style.display='none';controls.style.display='block';update();};
+code.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('adminLogin').click()});
+document.getElementById('adminApply').onclick=()=>{let n=Number(speed.value);if(!speed.value||!Number.isFinite(n)||n<0.01||n>1e9){current.textContent='0.01～1,000,000,000の範囲で入力してね';return;}orbitAdminSpeed=n;try{localStorage.setItem('orbit-admin-speed',String(n))}catch(e){}update();};
+document.getElementById('adminNormal').onclick=()=>{orbitAdminSpeed=1;try{localStorage.setItem('orbit-admin-speed','1')}catch(e){}update();};
+})();
+</script></body></html>
