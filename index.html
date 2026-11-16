@@ -319,7 +319,7 @@ footer{padding-bottom:26px}
 .ipTreeSection{border:1px solid #59739a;background:linear-gradient(150deg,#1b2635,#171e23 64%);border-radius:16px;padding:16px;margin:7px 0 16px}
 .ipTreeTop{display:flex;align-items:start;justify-content:space-between;gap:12px}.ipTreeTop h2{margin:5px 0 8px;font-size:18px;color:#d4eaff}.ipTreeTop p{font-size:11px;color:var(--muted);line-height:1.6;margin:0 0 15px}
 .ipTreeBalance{flex:0 0 auto;display:flex;flex-direction:column;text-align:right;font-size:11px;color:#acc7e4}.ipTreeBalance strong{font-size:21px;color:#e6f3ff}.ipTreeBalance small{font-size:10px;color:var(--muted)}
-.ipTreeGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.ipTreeGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.ipTreeLane{padding-bottom:12px}.ipTreeLaneTitle{min-height:25px}
 .ipTreeLane{min-width:0;display:flex;flex-direction:column;align-items:stretch;gap:0}.ipTreeLaneTitle{font-size:11px;text-align:center;font-weight:700;color:#cbe4ff;margin:0 0 8px}
 .ipTreeNode{position:relative;width:100%;border:1px solid #43566e;border-radius:12px;background:linear-gradient(180deg,#253346,#17212c);color:#d6e5f1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:10px 5px;min-height:111px;line-height:1.3;touch-action:manipulation}
 .ipTreeNode b{font-size:11px;text-align:center}.ipTreeNode .ipTreeSymbol{font-size:23px;color:#b5d7ff}.ipTreeNode small{font-size:9px;color:#aab8c8;text-align:center}.ipTreeNode em{font-size:10px;font-style:normal;color:#c5e5ff}
@@ -343,7 +343,8 @@ footer{padding-bottom:26px}
  #star{width:min(44vw,162px)!important;height:min(44vw,162px)!important;min-width:0!important;min-height:0!important}
  #star span{font-size:clamp(63px,19vw,80px)!important}
 }
-</style></head><body><main><header><a class="brand" href="./">✳ ORBIT<span>IDLE</span></a><span class="saved" id="saved">● 自動セーブ</span></header><section class="intro"><span class="eyebrow">A LITTLE STAR. AN ENDLESS JOURNEY.</span><h1>小さな光から、<br>果てしない宇宙へ。</h1><p>集める。育てる。また、新しい星になる。</p></section><details class="soundpanel"><summary>♫ サウンド設定</summary><div class="soundcontrols"><button id="musicToggle" aria-pressed="true">BGM ON</button><button id="effectsToggle" aria-pressed="true">効果音 ON</button><label for="audioVolume">音量 <input id="audioVolume" type="range" min="0" max="100" value="35"><output id="volumeValue" for="audioVolume">35%</output></label></div><p class="footnote">BGMはタブを残したまま再生してください。タブを閉じると停止します。バックグラウンド再生は端末・ブラウザによって制限されます。</p><p id="audioHint">星やボタンをタップすると音が始まります。</p></details><div class="layout"><section class="space panel"><div class="topline"><span>YOUR UNIVERSE</span><span id="stage">01 / はじまりの星</span></div><div class="buildVersion">v4.0 · 星ボタン拡大</div><button class="secretRebirthSpot" id="secretRebirthSpot" type="button" aria-label="5回タップで確認なしで転生する"><span class="secretRebirthTitle">✺ 転生</span><span class="secretRebirthProgress" id="secretRebirthProgress" aria-live="polite">0 / 5</span></button><button class="secretRebirthSpot secretAscensionSpot" id="secretAscensionSpot" type="button" aria-label="5回タップでアセンションする"><span class="secretRebirthTitle">✧ アセンション</span><span class="secretRebirthProgress" id="secretAscensionProgress" aria-live="polite">0 / 5</span></button><div class="balance"><span class="label">スターダスト</span><strong id="dust">0</strong><span class="rate" id="rate">+0 / 秒</span></div><div class="universe"><div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div><i class="planet p1"></i><i class="planet p2"></i><button id="star" aria-label="星をタップしてスターダストを集める"><span>✦</span></button><div id="floats"></div></div><div class="infinityClaimArea"><button id="infinityClaim" class="infinityClaim" type="button" disabled>∞ インフィニティを獲得</button><div class="infinityProgressWrap"><div class="infinityProgressLabel"><span>♾ INFINITY PROGRESS</span><span id="infinityProgressPct">0%</span></div><div class="infinityProgressTrack" role="progressbar" aria-label="インフィニティへの進捗" aria-valuemin="0" aria-valuemax="100"><i id="infinityProgressFill" class="infinityProgressFill"></i><span class="infinityProgressMilestone" style="left:25%"></span><span class="infinityProgressMilestone" style="left:50%"></span><span class="infinityProgressMilestone" style="left:75%"></span></div><small id="infinityProgressText" class="infinityProgressText">現在 0 / 必要 1.00e300</small></div><small id="infinityClaimInfo">インフィニティの必要条件：スターダスト 1e300</small></div><div class="tapnote">星をタップ・長押しして光を集めよう <b id="tapValue">+1</b></div><div class="milestone" id="evolutionMilestone"><div><span id="goalTitle">最初の軌道をつくる</span><span id="goalValue">0 / 15</span></div><div class="track"><i id="progress"></i></div><small id="goalHint">15ダストで「光の粒子」を購入 → 自動生産スタート</small></div></section><section class="workshop"><div class="nextActionCard"><span class="eyebrow">NEXT STEP</span><b id="nextAction"></b><small id="actionHint"></small></div><nav class="mainTabs"><button class="active" data-tab="production">生産</button><button data-tab="research">研究</button><button data-tab="automation">自動化</button><button data-tab="ascension">アセンション</button><button data-tab="infinity">∞ ブレイク</button><button data-tab="blackhole">◉ ブラックホール</button><button data-tab="record">記録</button></nav><div id="production" class="tabPane"><div class="subhead"><div class="subheadText"><strong>生産設備</strong><small>設備を買って毎秒のスターダストを増やそう。<br>通常購入は長押しで加速、「全て購入」は安い順にまとめ買い。</small></div><div class="subPills"><span class="subPill">全10種類</span><span class="subPill">長押し対応</span></div></div><div class="sectionline"><h2>光を生むもの <small class="equipmentCount">全10種類</small></h2><div class="purchaseActions"><button id="buyAll" class="tiny buyAll" type="button">✦ 全て購入</button><button id="bulk" class="tiny">購入 ×1</button></div></div><p class="holdhint">設備を積み上げて毎秒生産を伸ばそう。購入倍率は右上で切替。</p><div id="generators"></div></div><div id="research" class="tabPane" hidden><div class="subhead"><div class="subheadText"><strong>研究と恒久強化</strong><small>タップと自動生産を強化し、宇宙研究で遊びやすさも伸ばせる。<br>研究の一部は周回でリセットされるけど、進化はずっと残る。</small></div><div class="subPills"><span class="subPill">長押し対応</span><span class="subPill">転生で研究リセット</span></div></div><div class="infoGrid"><div class="infoMini"><span>タップ獲得</span><b id="researchTapMini">0</b></div><div class="infoMini"><span>自動生産</span><b id="researchRateMini">0</b></div></div><div class="sectionCard"><div class="sectionline"><h2>星の研究</h2><small>即効性のある基礎強化</small></div><div style="display:flex;flex-direction:column;gap:10px"><button class="upgrade" id="tapUpgrade"><span>✧ <b>タップ強化</b><small id="tapDesc"></small></span><strong id="tapCost"></strong></button><button class="upgrade" id="powerUpgrade"><span>⌁ <b>共鳴増幅</b><small id="powerDesc"></small></span><strong id="powerCost"></strong></button></div></div><div class="sectionCard"><div class="sectionline"><h2>宇宙研究 <small>6種類の新しい強化</small></h2><small>研究のMAXを超えずに購入されます</small></div><div id="researchList"></div></div><p class="footnote">宇宙研究は転生でリセット。進化・星のかけら・超越強化は残ります。</p></div><div id="automation" class="tabPane" hidden><div class="subhead"><div class="subheadText"><strong>自動化</strong><small>設備・研究・「全て購入」を個別に自動化できる。<br>画面を開いている間だけ動作し、自動購入の音は鳴らない。</small></div><div class="subPills"><span class="subPill">100msごと</span><span class="subPill">転生後も設定維持</span></div></div><section class="autoPanel sectionCard" aria-label="自動購入"><h2>⟳ 自動購入</h2><div class="autoControls"><button id="autoEquipment" aria-pressed="false">設備 OFF</button><button id="autoResearch" aria-pressed="false">研究 OFF</button><button id="autoBuyAll" aria-pressed="false">✦ 全て購入 OFF</button><button id="autoAscension" aria-pressed="false">✧ APショップ OFF</button><button id="autoInfinity" aria-pressed="false">∞ IPショップ OFF</button><button id="autoStop">すべて停止</button></div><p id="autoStatus" role="status"></p><small>ONにすると0.1秒ごとに買える分を一括購入します。設備・研究はスターダスト、APショップはアセンションP、IPショップはインフィニティPを使用。全て購入は設備と研究が対象です。研究のMAXは守ります。</small></section></div><div id="rebirth" hidden><div class="rebirthbox"><span class="bigicon">✺</span><span class="eyebrow">A NEW BEGINNING</span><h2>終わりは、はじまり。</h2><p>この周回で10万ダストを集めると転生が解放。<br>星のかけらで、次の宇宙がもっと速く育つ。</p><div class="stats"><span>星のかけら <b id="shards">0</b></span><span>永続倍率 <b id="multi">×1</b></span></div><p id="rebirthInfo"></p><button class="primary" id="prestige">転生する</button><small>ダスト・生産設備・研究がリセットされます。<br>かけらと記録は残ります。</small></div></div><div id="ascension" hidden><div hidden aria-hidden="true"><b id="ascPoints">0</b><b id="ascCount">0</b><p id="ascInfo"></p><button id="ascend" type="button">アセンションする</button></div><section class="ascShop"><div class="sectionline"><h2>✦ 超越ショップ</h2><small class="ascAvailable">使用可能 AP <b id="ascAvailable">0</b></small></div><p>アセンションポイントで永続強化。長押しで連続購入できます。</p><div id="ascUpgrades"></div></section></div><div id="infinity" hidden><div hidden aria-hidden="true"><b id="ipPoints">0</b><b id="ipCount">0</b><p id="ipInfo"></p><button id="infinityBreak" type="button">インフィニティ・ブレイク</button></div><section class="ipTreeSection" aria-label="インフィニティツリー"><div class="ipTreeTop"><div><span class="eyebrow">INFINITY TREE</span><h2>♾ インフィニティツリー</h2><p>IPを使って枝を解放しよう。前のノードを購入すると、その先に進める。効果は永続。</p></div><div class="ipTreeBalance">所持IP <strong id="ipTreeBalance">0</strong><small id="ipTreeCount">0 / 9 解放</small></div></div><div class="ipTreeGrid" id="ipTreeGrid"></div><p class="ipTreeNote">※通常のIPショップとは別。自動購入はツリーに使用しません。解放済みノードはインフィニティ後も残ります。</p></section><section class="ascShop"><div class="sectionline"><h2>∞ インフィニティショップ</h2><small>利用可能 IP <b id="ipAvailable">0</b></small></div><p>IPで購入した強化は、何度ブレイクしても残ります。</p><div id="ipUpgrades"></div></section></div><div id="blackhole" class="tabPane" hidden><section class="bhHero"><span class="bhEyebrow">THE SINGULARITY</span><div class="bhVisual"><span class="bhCore" aria-hidden="true"><span class="bhCoreInner"></span></span></div><h2>ブラックホール育成</h2><p>スターダストを吸い込ませて、永遠に成長させよう。<br>成長は転生・アセンション・インフィニティを超えて引き継がれる。</p><div class="bhStats"><div><small>ブラックホール Lv</small><b id="bhLevel">0</b></div><div><small>投入した累計ダスト</small><b id="bhInvested">0</b></div></div><div class="bhBuffs"><div><span>生産ボーナス</span><strong id="bhProduction">×1</strong></div><div><span>タップボーナス</span><strong id="bhTap">×1</strong></div></div><div class="bhProgress"><div class="bhProgressHeading"><span>次のレベルまで</span><strong id="bhStatus">解放まで待機</strong></div><div class="bhBar"><i id="bhFill"></i></div><small id="bhCost">必要：スターダスト 1.00e50</small></div><div class="bhActions"><button class="bhBuy" id="bhBuy1" type="button">1レベル成長</button><button class="bhBuy" id="bhBuy10" type="button">最大10レベル</button><button class="bhBuy" id="bhBuyMax" type="button">買えるだけ成長</button></div><small class="bhHint" id="bhHint">スターダスト 1e50 に達すると解放。購入時のみダストを消費する。</small></section><section class="bhMilestones"><h3>特異点マイルストーン</h3><div id="bhMilestoneList" class="bhMilestoneList"></div></section></div><div id="record" hidden><h2>現在のステータス</h2><section class="statusOverview" aria-label="現在の状況"><div class="overviewGrid"><div class="statChip emphasis"><span>スターダスト</span><b id="quickDust">0</b><small id="quickRate">+0 / 秒</small></div><div class="statChip"><span>タップ獲得</span><b id="quickTap">0</b><small id="quickStage">進化 01</small></div><div class="statChip"><span>星のかけら</span><b id="quickShards">0</b><small id="quickMulti">永続倍率 ×1</small></div><div class="statChip"><span>アセンションP</span><b id="quickAP">0</b><small id="quickAsc">アセンション 0 回</small></div><div class="statChip"><span>∞ ポイント</span><b id="quickIP">0</b><small id="quickInf">∞ ブレイク 0 回</small></div><div class="statChip"><span>この周回</span><b id="quickRun">0</b><small id="quickGoal">次の目標へ</small></div></div></section><h2>あなたの宇宙の記録</h2><div class="records" id="records"></div><h2>マイルストーン</h2><div id="achievements"></div><p class="footnote">この端末のブラウザに自動保存。閉じている間の報酬は基本8時間分。宇宙研究で最大24時間まで伸ばせます。</p><section class="resetGamePanel" aria-labelledby="resetGameTitle"><h2 id="resetGameTitle">最初からやり直す</h2><p>スターダスト・設備・研究・転生・アセンション・インフィニティ・ブラックホール・実績・自動購入をすべて初期化します。元には戻せません。</p><button id="resetGameOpen" class="resetGameOpen" type="button">すべての進行データをリセット</button></section></div></section></div><section class="evolutionJourney"><h2>宇宙の進化 <small>集めたダストの累計で解放。使っても進化は失われません。</small></h2><div id="evolutionPath"></div></section><footer><span>ORBIT IDLE / Auto Buy Upgrade 3.8</span><span>少しずつ、どこまでも。</span><button id="help">遊び方</button></footer></main><div id="toast" role="status"></div><dialog id="resetGameDialog" class="resetGameDialog" aria-labelledby="resetGameDialogTitle"><h2 id="resetGameDialogTitle">本当に0からやり直す？</h2><p>この端末のORBIT IDLEの進行データがすべて消えます。<strong>取り消しできません。</strong></p><label for="resetGamePhrase">実行するには「リセット」と入力</label><input id="resetGamePhrase" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="リセット"><div class="dialogActions"><button id="resetGameCancel" type="button">キャンセル</button><button id="resetGameConfirm" type="button" disabled>完全に初期化する</button></div></dialog><dialog id="modal"><h2 id="modalTitle"></h2><p id="modalBody"></p><div class="dialogActions"><button id="cancel">キャンセル</button><button class="primary" id="confirm">OK</button></div></dialog><script>
+[data-tab="blackhole"][hidden]{display:none!important}
+</style></head><body><main><header><a class="brand" href="./">✳ ORBIT<span>IDLE</span></a><span class="saved" id="saved">● 自動セーブ</span></header><section class="intro"><span class="eyebrow">A LITTLE STAR. AN ENDLESS JOURNEY.</span><h1>小さな光から、<br>果てしない宇宙へ。</h1><p>集める。育てる。また、新しい星になる。</p></section><details class="soundpanel"><summary>♫ サウンド設定</summary><div class="soundcontrols"><button id="musicToggle" aria-pressed="true">BGM ON</button><button id="effectsToggle" aria-pressed="true">効果音 ON</button><label for="audioVolume">音量 <input id="audioVolume" type="range" min="0" max="100" value="35"><output id="volumeValue" for="audioVolume">35%</output></label></div><p class="footnote">BGMはタブを残したまま再生してください。タブを閉じると停止します。バックグラウンド再生は端末・ブラウザによって制限されます。</p><p id="audioHint">星やボタンをタップすると音が始まります。</p></details><div class="layout"><section class="space panel"><div class="topline"><span>YOUR UNIVERSE</span><span id="stage">01 / はじまりの星</span></div><div class="buildVersion">v4.1 · インフィニティ拡張</div><button class="secretRebirthSpot" id="secretRebirthSpot" type="button" aria-label="5回タップで確認なしで転生する"><span class="secretRebirthTitle">✺ 転生</span><span class="secretRebirthProgress" id="secretRebirthProgress" aria-live="polite">0 / 5</span></button><button class="secretRebirthSpot secretAscensionSpot" id="secretAscensionSpot" type="button" aria-label="5回タップでアセンションする"><span class="secretRebirthTitle">✧ アセンション</span><span class="secretRebirthProgress" id="secretAscensionProgress" aria-live="polite">0 / 5</span></button><div class="balance"><span class="label">スターダスト</span><strong id="dust">0</strong><span class="rate" id="rate">+0 / 秒</span></div><div class="universe"><div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div><i class="planet p1"></i><i class="planet p2"></i><button id="star" aria-label="星をタップしてスターダストを集める"><span>✦</span></button><div id="floats"></div></div><div class="infinityClaimArea"><button id="infinityClaim" class="infinityClaim" type="button" disabled>∞ インフィニティを獲得</button><div class="infinityProgressWrap"><div class="infinityProgressLabel"><span>♾ INFINITY PROGRESS</span><span id="infinityProgressPct">0%</span></div><div class="infinityProgressTrack" role="progressbar" aria-label="インフィニティへの進捗" aria-valuemin="0" aria-valuemax="100"><i id="infinityProgressFill" class="infinityProgressFill"></i><span class="infinityProgressMilestone" style="left:25%"></span><span class="infinityProgressMilestone" style="left:50%"></span><span class="infinityProgressMilestone" style="left:75%"></span></div><small id="infinityProgressText" class="infinityProgressText">現在 0 / 必要 1.00e300</small></div><small id="infinityClaimInfo">インフィニティの必要条件：スターダスト 1e300</small></div><div class="tapnote">星をタップ・長押しして光を集めよう <b id="tapValue">+1</b></div><div class="milestone" id="evolutionMilestone"><div><span id="goalTitle">最初の軌道をつくる</span><span id="goalValue">0 / 15</span></div><div class="track"><i id="progress"></i></div><small id="goalHint">15ダストで「光の粒子」を購入 → 自動生産スタート</small></div></section><section class="workshop"><div class="nextActionCard"><span class="eyebrow">NEXT STEP</span><b id="nextAction"></b><small id="actionHint"></small></div><nav class="mainTabs"><button class="active" data-tab="production">生産</button><button data-tab="research">研究</button><button data-tab="automation">自動化</button><button data-tab="ascension">アセンション</button><button data-tab="infinity">∞ ブレイク</button><button data-tab="blackhole">◉ ブラックホール</button><button data-tab="record">記録</button></nav><div id="production" class="tabPane"><div class="subhead"><div class="subheadText"><strong>生産設備</strong><small>設備を買って毎秒のスターダストを増やそう。<br>通常購入は長押しで加速、「全て購入」は安い順にまとめ買い。</small></div><div class="subPills"><span class="subPill">全10種類</span><span class="subPill">長押し対応</span></div></div><div class="sectionline"><h2>光を生むもの <small class="equipmentCount">全10種類</small></h2><div class="purchaseActions"><button id="buyAll" class="tiny buyAll" type="button">✦ 全て購入</button><button id="bulk" class="tiny">購入 ×1</button></div></div><p class="holdhint">設備を積み上げて毎秒生産を伸ばそう。購入倍率は右上で切替。</p><div id="generators"></div></div><div id="research" class="tabPane" hidden><div class="subhead"><div class="subheadText"><strong>研究と恒久強化</strong><small>タップと自動生産を強化し、宇宙研究で遊びやすさも伸ばせる。<br>研究の一部は周回でリセットされるけど、進化はずっと残る。</small></div><div class="subPills"><span class="subPill">長押し対応</span><span class="subPill">転生で研究リセット</span></div></div><div class="infoGrid"><div class="infoMini"><span>タップ獲得</span><b id="researchTapMini">0</b></div><div class="infoMini"><span>自動生産</span><b id="researchRateMini">0</b></div></div><div class="sectionCard"><div class="sectionline"><h2>星の研究</h2><small>即効性のある基礎強化</small></div><div style="display:flex;flex-direction:column;gap:10px"><button class="upgrade" id="tapUpgrade"><span>✧ <b>タップ強化</b><small id="tapDesc"></small></span><strong id="tapCost"></strong></button><button class="upgrade" id="powerUpgrade"><span>⌁ <b>共鳴増幅</b><small id="powerDesc"></small></span><strong id="powerCost"></strong></button></div></div><div class="sectionCard"><div class="sectionline"><h2>宇宙研究 <small>6種類の新しい強化</small></h2><small>研究のMAXを超えずに購入されます</small></div><div id="researchList"></div></div><p class="footnote">宇宙研究は転生でリセット。進化・星のかけら・超越強化は残ります。</p></div><div id="automation" class="tabPane" hidden><div class="subhead"><div class="subheadText"><strong>自動化</strong><small>設備・研究・「全て購入」を個別に自動化できる。<br>画面を開いている間だけ動作し、自動購入の音は鳴らない。</small></div><div class="subPills"><span class="subPill">100msごと</span><span class="subPill">転生後も設定維持</span></div></div><section class="autoPanel sectionCard" aria-label="自動購入"><h2>⟳ 自動購入</h2><div class="autoControls"><button id="autoEquipment" aria-pressed="false">設備 OFF</button><button id="autoResearch" aria-pressed="false">研究 OFF</button><button id="autoBuyAll" aria-pressed="false">✦ 全て購入 OFF</button><button id="autoAscension" aria-pressed="false">✧ APショップ OFF</button><button id="autoInfinity" aria-pressed="false">∞ IPショップ OFF</button><button id="autoStop">すべて停止</button></div><p id="autoStatus" role="status"></p><small>自動購入はインフィニティツリーから解放。ONにすると0.1秒ごとに買える分を一括購入します。設備・研究はスターダスト、APショップはアセンションP、IPショップはインフィニティPを使用。全て購入は設備と研究が対象です。研究のMAXは守ります。</small></section></div><div id="rebirth" hidden><div class="rebirthbox"><span class="bigicon">✺</span><span class="eyebrow">A NEW BEGINNING</span><h2>終わりは、はじまり。</h2><p>この周回で10万ダストを集めると転生が解放。<br>星のかけらで、次の宇宙がもっと速く育つ。</p><div class="stats"><span>星のかけら <b id="shards">0</b></span><span>永続倍率 <b id="multi">×1</b></span></div><p id="rebirthInfo"></p><button class="primary" id="prestige">転生する</button><small>ダスト・生産設備・研究がリセットされます。<br>かけらと記録は残ります。</small></div></div><div id="ascension" hidden><div hidden aria-hidden="true"><b id="ascPoints">0</b><b id="ascCount">0</b><p id="ascInfo"></p><button id="ascend" type="button">アセンションする</button></div><section class="ascShop"><div class="sectionline"><h2>✦ 超越ショップ</h2><small class="ascAvailable">使用可能 AP <b id="ascAvailable">0</b></small></div><p>アセンションポイントで永続強化。長押しで連続購入できます。</p><div id="ascUpgrades"></div></section></div><div id="infinity" hidden><div hidden aria-hidden="true"><b id="ipPoints">0</b><b id="ipCount">0</b><p id="ipInfo"></p><button id="infinityBreak" type="button">インフィニティ・ブレイク</button></div><section class="ipTreeSection" aria-label="インフィニティツリー"><div class="ipTreeTop"><div><span class="eyebrow">INFINITY TREE</span><h2>♾ インフィニティツリー</h2><p>IPでブラックホール・自動購入・IP獲得上限を解放！ 最初は1回のブレイクで最大1IP。上限はツリーで増加。</p></div><div class="ipTreeBalance">所持IP <strong id="ipTreeBalance">0</strong><small id="ipTreeCount">0 / 20 解放</small></div></div><div class="ipTreeGrid" id="ipTreeGrid"></div><p class="ipTreeNote">※最初の9ノードも維持。ツリーは手動で解放し、解放済みノードは周回しても残ります。</p></section><section class="ascShop"><div class="sectionline"><h2>∞ インフィニティショップ</h2><small>利用可能 IP <b id="ipAvailable">0</b></small></div><p>IPで購入した強化は、何度ブレイクしても残ります。</p><div id="ipUpgrades"></div></section></div><div id="blackhole" class="tabPane" hidden><section class="bhHero"><span class="bhEyebrow">THE SINGULARITY</span><div class="bhVisual"><span class="bhCore" aria-hidden="true"><span class="bhCoreInner"></span></span></div><h2>ブラックホール育成</h2><p>インフィニティツリーで解放後、IPを投入して強化しよう。<br>成長は転生・アセンション・インフィニティを超えて引き継がれる。</p><div class="bhStats"><div><small>ブラックホール Lv</small><b id="bhLevel">0</b></div><div><small>投入した累計IP</small><b id="bhInvested">0</b></div></div><div class="bhBuffs"><div><span>生産ボーナス</span><strong id="bhProduction">×1</strong></div><div><span>タップボーナス</span><strong id="bhTap">×1</strong></div></div><div class="bhProgress"><div class="bhProgressHeading"><span>次のレベルまで</span><strong id="bhStatus">解放まで待機</strong></div><div class="bhBar"><i id="bhFill"></i></div><small id="bhCost">必要：1 IP</small></div><div class="bhActions"><button class="bhBuy" id="bhBuy1" type="button">1レベル成長</button><button class="bhBuy" id="bhBuy10" type="button">最大10レベル</button><button class="bhBuy" id="bhBuyMax" type="button">買えるだけ成長</button></div><small class="bhHint" id="bhHint">スターダスト 1e50 に達すると解放。購入時のみダストを消費する。</small></section><section class="bhMilestones"><h3>特異点マイルストーン</h3><div id="bhMilestoneList" class="bhMilestoneList"></div></section></div><div id="record" hidden><h2>現在のステータス</h2><section class="statusOverview" aria-label="現在の状況"><div class="overviewGrid"><div class="statChip emphasis"><span>スターダスト</span><b id="quickDust">0</b><small id="quickRate">+0 / 秒</small></div><div class="statChip"><span>タップ獲得</span><b id="quickTap">0</b><small id="quickStage">進化 01</small></div><div class="statChip"><span>星のかけら</span><b id="quickShards">0</b><small id="quickMulti">永続倍率 ×1</small></div><div class="statChip"><span>アセンションP</span><b id="quickAP">0</b><small id="quickAsc">アセンション 0 回</small></div><div class="statChip"><span>∞ ポイント</span><b id="quickIP">0</b><small id="quickInf">∞ ブレイク 0 回</small></div><div class="statChip"><span>この周回</span><b id="quickRun">0</b><small id="quickGoal">次の目標へ</small></div></div></section><h2>あなたの宇宙の記録</h2><div class="records" id="records"></div><h2>マイルストーン</h2><div id="achievements"></div><p class="footnote">この端末のブラウザに自動保存。閉じている間の報酬は基本8時間分。宇宙研究で最大24時間まで伸ばせます。</p><section class="resetGamePanel" aria-labelledby="resetGameTitle"><h2 id="resetGameTitle">最初からやり直す</h2><p>スターダスト・設備・研究・転生・アセンション・インフィニティ・ブラックホール・実績・自動購入をすべて初期化します。元には戻せません。</p><button id="resetGameOpen" class="resetGameOpen" type="button">すべての進行データをリセット</button></section></div></section></div><section class="evolutionJourney"><h2>宇宙の進化 <small>集めたダストの累計で解放。使っても進化は失われません。</small></h2><div id="evolutionPath"></div></section><footer><span>ORBIT IDLE / Auto Buy Upgrade 3.8</span><span>少しずつ、どこまでも。</span><button id="help">遊び方</button></footer></main><div id="toast" role="status"></div><dialog id="resetGameDialog" class="resetGameDialog" aria-labelledby="resetGameDialogTitle"><h2 id="resetGameDialogTitle">本当に0からやり直す？</h2><p>この端末のORBIT IDLEの進行データがすべて消えます。<strong>取り消しできません。</strong></p><label for="resetGamePhrase">実行するには「リセット」と入力</label><input id="resetGamePhrase" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="リセット"><div class="dialogActions"><button id="resetGameCancel" type="button">キャンセル</button><button id="resetGameConfirm" type="button" disabled>完全に初期化する</button></div></dialog><dialog id="modal"><h2 id="modalTitle"></h2><p id="modalBody"></p><div class="dialogActions"><button id="cancel">キャンセル</button><button class="primary" id="confirm">OK</button></div></dialog><script>
 "use strict";
 // Safari gesture fallback. Single-finger scrolling and rapid star taps stay native.
 for (const event of ['gesturestart', 'gesturechange', 'gestureend']) {
@@ -462,7 +463,7 @@ function renderProgression(){
 </script><script>
 'use strict';
 const KEY='orbit-idle-v1',defs=[{name:'光の粒子',icon:'✧',base:15,rate:1},{name:'星の衛星',icon:'◌',base:150,rate:10},{name:'星雲の炉',icon:'❋',base:1800,rate:100},{name:'銀河の核',icon:'◉',base:22000,rate:1200},{name:'超新星エンジン',icon:'✷',base:250000,rate:16000},{name:'中性子星',icon:'✺',base:3000000,rate:240000},{name:'ブラックホール',icon:'◍',base:40000000,rate:3800000},{name:'銀河工場',icon:'❖',base:600000000,rate:65000000},{name:'次元ゲート',icon:'⟡',base:10000000000,rate:1200000000},{name:'宇宙創生炉',icon:'✹',base:200000000000,rate:24000000000}];
-const fresh=()=>({dust:0,run:0,total:0,levels:defs.map(()=>0),research:[0,0,0,0,0,0],tap:0,power:0,shards:0,resets:0,taps:0,ascPoints:0,ascTotal:0,ascCount:0,ascUpgrades:[0,0,0],ipPoints:0,ipTotal:0,ipCount:0,ipUpgrades:[0,0,0,0],ipTree:Array(9).fill(false),bhLevel:0,bhInvested:0,time:Date.now()});let s=fresh(),bulk=1,saveOK=true;
+const fresh=()=>({dust:0,run:0,total:0,levels:defs.map(()=>0),research:[0,0,0,0,0,0],tap:0,power:0,shards:0,resets:0,taps:0,ascPoints:0,ascTotal:0,ascCount:0,ascUpgrades:[0,0,0],ipPoints:0,ipTotal:0,ipCount:0,ipUpgrades:[0,0,0,0],ipTree:Array(20).fill(false),bhLevel:0,bhInvested:0,bhInvestedIP:0,time:Date.now()});let s=fresh(),bulk=1,saveOK=true;
 try{const raw=JSON.parse(localStorage.getItem(KEY));if(raw&&['dust','run','total','tap','power','shards','resets','taps','time'].every(k=>Number.isFinite(raw[k])&&raw[k]>=0)&&Array.isArray(raw.levels)&&(raw.levels.length===4||raw.levels.length===defs.length)&&raw.levels.every(n=>Number.isInteger(n)&&n>=0)){s=raw;}}catch(e){}
 s.levels=defs.map((_,i)=>s.levels[i]??0);
 s.ascPoints=Number.isFinite(s.ascPoints)&&s.ascPoints>=0?s.ascPoints:0;
@@ -475,10 +476,11 @@ s.ipPoints=Number.isSafeInteger(s.ipPoints)&&s.ipPoints>=0?s.ipPoints:0;
 s.ipTotal=Number.isSafeInteger(s.ipTotal)&&s.ipTotal>=0?s.ipTotal:0;
 s.ipCount=Number.isSafeInteger(s.ipCount)&&s.ipCount>=0?s.ipCount:0;
 s.ipUpgrades=Array.from({length:4},(_,i)=>Number.isSafeInteger(s.ipUpgrades?.[i])&&s.ipUpgrades[i]>=0?s.ipUpgrades[i]:0);
-s.ipTree=Array.from({length:9},(_,i)=>s.ipTree?.[i]===true);
+s.ipTree=Array.from({length:20},(_,i)=>s.ipTree?.[i]===true);
 // New fields are optional so all existing save files remain compatible.
 s.bhLevel=Number.isSafeInteger(s.bhLevel)&&s.bhLevel>=0?Math.min(100,s.bhLevel):0;
 s.bhInvested=Number.isFinite(s.bhInvested)&&s.bhInvested>=0?s.bhInvested:0;
+s.bhInvestedIP=Number.isSafeInteger(s.bhInvestedIP)&&s.bhInvestedIP>=0?s.bhInvestedIP:0;
 const ipDefs=[{name:'無限炉心',icon:'∞',desc:'全設備の生産 ×10 / Lv',base:1,growth:2},{name:'無限の指先',icon:'✧',desc:'タップ獲得 ×10 / Lv',base:1,growth:2},{name:'超越の連鎖',icon:'✺',desc:'獲得アセンションポイント ×2 / Lv',base:2,growth:3},{name:'銀河の深淵',icon:'❂',desc:'転生の星のかけら ×2 / Lv',base:2,growth:3}];
 const ipCost=i=>Math.ceil(ipDefs[i].base*ipDefs[i].growth**s.ipUpgrades[i]);
 const ipBonus=i=>Math.pow(i<2?10:2,s.ipUpgrades[i]);
@@ -491,12 +493,24 @@ const ipTreeDefs=[
  {name:'超越の門',icon:'⟡',lane:2,depth:1,cost:12,needs:[2],kind:'asc',factor:2,desc:'獲得AP ×2'},
  {name:'特異点炉心',icon:'✹',lane:0,depth:2,cost:30,needs:[3],kind:'production',factor:20,desc:'設備生産 ×20'},
  {name:'永遠の閃光',icon:'❋',lane:1,depth:2,cost:30,needs:[4],kind:'tap',factor:20,desc:'タップ獲得 ×20'},
- {name:'無限の輪廻',icon:'∞',lane:2,depth:2,cost:40,needs:[5],kind:'ip',factor:2,desc:'獲得IP ×2'}
+ {name:'無限の輪廻',icon:'∞',lane:2,depth:2,cost:40,needs:[5],kind:'ip',factor:2,desc:'獲得IP ×2'},
+ {name:'自動化の起動',icon:'⟳',lane:3,depth:0,cost:1,needs:[],kind:'unlockAuto',factor:1,desc:'設備・研究の自動購入解放'},
+ {name:'超越の自動化',icon:'✧',lane:3,depth:1,cost:2,needs:[9],kind:'unlockAPAuto',factor:1,desc:'APショップ自動購入解放'},
+ {name:'無限の自動化',icon:'∞',lane:3,depth:2,cost:4,needs:[10],kind:'unlockIPAuto',factor:1,desc:'IPショップ自動購入解放'},
+ {name:'深淵への入口',icon:'◉',lane:4,depth:0,cost:1,needs:[],kind:'unlockBH',factor:1,desc:'ブラックホール育成を解放'},
+ {name:'重力凝縮',icon:'◍',lane:4,depth:1,cost:3,needs:[12],kind:'bhPower',factor:2,desc:'BH生産・タップ倍率 ×2'},
+ {name:'深淵の共振',icon:'✹',lane:4,depth:2,cost:12,needs:[13],kind:'bhPower',factor:3,desc:'BH生産・タップ倍率 ×3'},
+ {name:'無限の器 I',icon:'Ⅰ',lane:5,depth:0,cost:1,needs:[],kind:'ipCap',factor:2,desc:'1回のIP獲得上限 2'},
+ {name:'無限の器 II',icon:'Ⅱ',lane:5,depth:1,cost:2,needs:[15],kind:'ipCap',factor:5,desc:'1回のIP獲得上限 5'},
+ {name:'無限の器 III',icon:'Ⅲ',lane:5,depth:2,cost:5,needs:[16],kind:'ipCap',factor:10,desc:'1回のIP獲得上限 10'},
+ {name:'無限の器 IV',icon:'Ⅳ',lane:5,depth:3,cost:12,needs:[17],kind:'ipCap',factor:25,desc:'1回のIP獲得上限 25'},
+ {name:'無限の器 V',icon:'Ⅴ',lane:5,depth:4,cost:30,needs:[18],kind:'ipCap',factor:100,desc:'1回のIP獲得上限 100'}
 ];
 const ipTreeBonus=kind=>ipTreeDefs.reduce((a,node,i)=>a*(s.ipTree[i]&&node.kind===kind?node.factor:1),1);
 const ipTreeCanBuy=i=>!s.ipTree[i]&&s.ipPoints>=ipTreeDefs[i].cost&&ipTreeDefs[i].needs.every(j=>s.ipTree[j]);
 
-const ipReward=()=>s.dust>=1e300?Math.max(1,Math.floor((1+Math.floor(Math.log10(1+s.ascTotal)))*ipTreeBonus('ip'))):0;
+const ipRewardCap=()=>ipTreeDefs.reduce((cap,node,i)=>s.ipTree[i]&&node.kind==='ipCap'?Math.max(cap,node.factor):cap,1);
+const ipReward=()=>s.dust>=1e300?Math.min(ipRewardCap(),Math.max(1,Math.floor((1+Math.floor(Math.log10(1+s.ascTotal)))*ipTreeBonus('ip')))):0;
 
 const ascDefs=[{name:'超越する炉心',icon:'✺',desc:'設備の生産を3倍に強化',base:1,growth:2},{name:'永遠の指先',icon:'✧',desc:'星のタップ獲得を3倍に強化',base:1,growth:2},{name:'銀河の導き',icon:'❂',desc:'転生時の星のかけら獲得を2倍に強化',base:2,growth:3}];
 const ascCost=i=>Math.ceil(ascDefs[i].base*ascDefs[i].growth**s.ascUpgrades[i]);
@@ -530,7 +544,7 @@ function clearSwipePreview(){
  swipePreview=null;
 }
 function switchOrbitTab(tabId, animated=true){
- if(!tabOrder.includes(tabId))return;
+ if(!tabOrder.includes(tabId)||(tabId==='blackhole'&&!s.ipTree[12]))return;
  const previous=activeTabId;
  if(tabId===previous){clearSwipePreview();return;}
  const direction=tabOrder.indexOf(tabId)>tabOrder.indexOf(previous)?1:-1;
@@ -580,8 +594,9 @@ tabSwipeHost.addEventListener('touchmove',event=>{
   swipePreview.style.willChange='transform,opacity';
  }
  event.preventDefault();
- const idx=tabOrder.indexOf(activeTabId);
- const blocked=(dx>0&&idx===0)||(dx<0&&idx===tabOrder.length-1);
+ const allowedTabs=tabOrder.filter(t=>t!=='blackhole'||s.ipTree[12]);
+ const idx=allowedTabs.indexOf(activeTabId);
+ const blocked=(dx>0&&idx===0)||(dx<0&&idx===allowedTabs.length-1);
  const offset=Math.max(-85,Math.min(85,dx*(blocked?.14:.36)));
  swipePreview.style.transition='none';
  swipePreview.style.transform='translate3d('+offset+'px,0,0)';
@@ -595,11 +610,12 @@ tabSwipeHost.addEventListener('touchend',event=>{
  if(!start.tracking)return;
  const elapsed=Math.max(1,performance.now()-start.time);
  const valid=Math.abs(dx)>=35||(Math.abs(dx)>=23&&Math.abs(dx)/elapsed>=.25);
- const target=tabOrder.indexOf(activeTabId)+(dx<0?1:-1);
+ const allowedTabs=tabOrder.filter(t=>t!=='blackhole'||s.ipTree[12]);
+ const target=allowedTabs.indexOf(activeTabId)+(dx<0?1:-1);
  // Prevent the swipe from accidentally activating a purchase button.
  suppressSwipeClickUntil=performance.now()+480;
- if(valid&&Math.abs(dx)>Math.abs(dy)*1.05&&target>=0&&target<tabOrder.length){
-  switchOrbitTab(tabOrder[target]);
+ if(valid&&Math.abs(dx)>Math.abs(dy)*1.05&&target>=0&&target<allowedTabs.length){
+  switchOrbitTab(allowedTabs[target]);
  }else{
   const pane=swipePreview;
   if(pane){
@@ -613,27 +629,29 @@ tabSwipeHost.addEventListener('touchcancel',()=>{swipeStart=null;clearSwipePrevi
 tabSwipeHost.addEventListener('click',event=>{
  if(performance.now()<suppressSwipeClickUntil){event.preventDefault();event.stopImmediatePropagation();}
 },true);
-function performRebirthImmediately(){const r=reward();if(!(r>0))return false;s={...fresh(),total:s.total,taps:s.taps,shards:s.shards+r,resets:s.resets+1,ascPoints:s.ascPoints,ascTotal:s.ascTotal,ascCount:s.ascCount,ascUpgrades:[...s.ascUpgrades],ascLifetimeShards:s.ascLifetimeShards+r,ipPoints:s.ipPoints,ipTotal:s.ipTotal,ipCount:s.ipCount,ipUpgrades:[...s.ipUpgrades],ipTree:[...s.ipTree],bhLevel:s.bhLevel,bhInvested:s.bhInvested};window.orbitSound?.('rebirth');save();render();toast('転生完了！ 星のかけら +'+fmt(r));return true;}
+function performRebirthImmediately(){const r=reward();if(!(r>0))return false;s={...fresh(),total:s.total,taps:s.taps,shards:s.shards+r,resets:s.resets+1,ascPoints:s.ascPoints,ascTotal:s.ascTotal,ascCount:s.ascCount,ascUpgrades:[...s.ascUpgrades],ascLifetimeShards:s.ascLifetimeShards+r,ipPoints:s.ipPoints,ipTotal:s.ipTotal,ipCount:s.ipCount,ipUpgrades:[...s.ipUpgrades],ipTree:[...s.ipTree],bhLevel:s.bhLevel,bhInvested:s.bhInvested,bhInvestedIP:s.bhInvestedIP};window.orbitSound?.('rebirth');save();render();toast('転生完了！ 星のかけら +'+fmt(r));return true;}
 $('prestige').onclick=performRebirthImmediately;
 $('ascUpgrades').innerHTML=ascDefs.map((d,i)=>`<button class="upgrade ascBuy" id="ascBuy${i}"><span>${d.icon} <b>${d.name} <span id="ascLv${i}"></span></b><small>${d.desc} · 現在 ×<span id="ascBonus${i}"></span></small></span><strong id="ascCost${i}"></strong></button>`).join('');
 ascDefs.forEach((d,i)=>{$('ascBuy'+i).onclick=()=>{const c=ascCost(i);if(s.ascPoints<c)return;s.ascPoints-=c;s.ascUpgrades[i]++;window.orbitSound?.('buy');save();render();};});
-function performAscensionImmediately(){const r=ascReward();if(!(r>0))return false;const old=s;s={...fresh(),total:old.total,taps:old.taps,ascPoints:old.ascPoints+r,ascTotal:old.ascTotal+r,ascCount:old.ascCount+1,ascUpgrades:[...old.ascUpgrades],ascLifetimeShards:old.ascLifetimeShards,ipPoints:old.ipPoints,ipTotal:old.ipTotal,ipCount:old.ipCount,ipUpgrades:[...old.ipUpgrades],ipTree:[...old.ipTree],bhLevel:old.bhLevel,bhInvested:old.bhInvested};window.orbitSound?.('rebirth');save();render();toast('アセンション達成！ AP +'+fmt(r));return true;}
+function performAscensionImmediately(){const r=ascReward();if(!(r>0))return false;const old=s;s={...fresh(),total:old.total,taps:old.taps,ascPoints:old.ascPoints+r,ascTotal:old.ascTotal+r,ascCount:old.ascCount+1,ascUpgrades:[...old.ascUpgrades],ascLifetimeShards:old.ascLifetimeShards,ipPoints:old.ipPoints,ipTotal:old.ipTotal,ipCount:old.ipCount,ipUpgrades:[...old.ipUpgrades],ipTree:[...old.ipTree],bhLevel:old.bhLevel,bhInvested:old.bhInvested,bhInvestedIP:old.bhInvestedIP};window.orbitSound?.('rebirth');save();render();toast('アセンション達成！ AP +'+fmt(r));return true;}
 $('ascend').onclick=performAscensionImmediately;
 $('ipUpgrades').innerHTML=ipDefs.map((d,i)=>`<button class="upgrade" id="ipBuy${i}"><span>${d.icon} <b>${d.name} <span id="ipLv${i}"></span></b><small>${d.desc} · 現在 ×<span id="ipBonus${i}"></span></small></span><strong id="ipCost${i}"></strong></button>`).join('');
 ipDefs.forEach((d,i)=>{$('ipBuy'+i).onclick=()=>{const c=ipCost(i);if(s.ipPoints<c)return;s.ipPoints-=c;s.ipUpgrades[i]++;window.orbitSound?.('buy');save();render();};});
-$('infinityBreak').onclick=()=>{const r=ipReward();if(!r)return;modal('インフィニティ・ブレイクする？',`インフィニティポイント +${fmt(r)} を獲得します。\n設備・研究・銀河転生・アセンションはリセットされます。\n星の進化・累計記録・IP強化は残ります。`,()=>{const old=s;s={...fresh(),total:old.total,taps:old.taps,ipPoints:old.ipPoints+r,ipTotal:old.ipTotal+r,ipCount:old.ipCount+1,ipUpgrades:[...old.ipUpgrades],ipTree:[...old.ipTree],bhLevel:old.bhLevel,bhInvested:old.bhInvested};window.orbitSound?.('rebirth');save();render();toast('∞ インフィニティ・ブレイク！ IP +'+fmt(r));});};
+$('infinityBreak').onclick=()=>{const r=ipReward();if(!r)return;modal('インフィニティ・ブレイクする？',`インフィニティポイント +${fmt(r)} を獲得します。\n設備・研究・銀河転生・アセンションはリセットされます。\n星の進化・累計記録・IP強化は残ります。`,()=>{const old=s;s={...fresh(),total:old.total,taps:old.taps,ipPoints:old.ipPoints+r,ipTotal:old.ipTotal+r,ipCount:old.ipCount+1,ipUpgrades:[...old.ipUpgrades],ipTree:[...old.ipTree],bhLevel:old.bhLevel,bhInvested:old.bhInvested,bhInvestedIP:old.bhInvestedIP};window.orbitSound?.('rebirth');save();render();toast('∞ インフィニティ・ブレイク！ IP +'+fmt(r));});};
 $('infinityClaim').onclick=()=>{if(ipReward()>0)$('infinityBreak').click();};
 // Infinity tree: each node is a one-time IP investment with prerequisite nodes.
-const ipTreeLanes=[['生産','⚙'],['タップ','✦'],['転生・超越','✺']];
+const ipTreeLanes=[['生産','⚙'],['タップ','✦'],['転生・超越','✺'],['自動化','⟳'],['ブラックホール','◉'],['IP上限','∞']];
 $('ipTreeGrid').innerHTML=ipTreeLanes.map(([label],lane)=>`<div class="ipTreeLane"><div class="ipTreeLaneTitle">${label}</div>${ipTreeDefs.map((d,i)=>d.lane===lane?`${d.depth?'<div class="ipTreeConnector" id="ipTreeLine'+i+'"></div>':''}<button class="ipTreeNode" type="button" id="ipTreeNode${i}"><span class="ipTreeSymbol">${d.icon}</span><b>${d.name}</b><small>${d.desc}</small><em id="ipTreeCost${i}">${d.cost} IP</em></button>`:'').join('')}</div>`).join('');
 ipTreeDefs.forEach((d,i)=>{$('ipTreeNode'+i).onclick=()=>{
  if(!ipTreeCanBuy(i))return;
  s.ipPoints-=d.cost;s.ipTree[i]=true;
- window.orbitSound?.('buy');save();render();toast('インフィニティツリー解放！ '+d.name+'（'+d.desc+'）');
+ window.orbitSound?.('buy');save();render();document.dispatchEvent(new Event('orbit-tree-updated'));toast('インフィニティツリー解放！ '+d.name+'（'+d.desc+'）');
 };});
 function renderInfinityTree(){
  $('ipTreeBalance').textContent=fmt(s.ipPoints);
- $('ipTreeCount').textContent=s.ipTree.filter(Boolean).length+' / '+ipTreeDefs.length+' 解放';
+ $('ipTreeCount').textContent=s.ipTree.filter(Boolean).length+' / '+ipTreeDefs.length+' 解放 · IP上限 '+ipRewardCap();
+ const bhTab=document.querySelector('[data-tab="blackhole"]'); if(bhTab)bhTab.hidden=!s.ipTree[12];
+ if(!s.ipTree[12]&&typeof activeTabId!=='undefined'&&activeTabId==='blackhole')switchOrbitTab('infinity',false);
  ipTreeDefs.forEach((d,i)=>{
   const done=s.ipTree[i],needsMet=d.needs.every(j=>s.ipTree[j]),canBuy=ipTreeCanBuy(i);
   const btn=$('ipTreeNode'+i);
@@ -655,34 +673,34 @@ const BH_CAP=100, bhMilestones=[
   {level:50,title:'深淵の反響',desc:'タップボーナス ×4'},
   {level:100,title:'永久特異点',desc:'生産・タップ倍率 ×10'}
 ];
-const bhCost=lv=>lv>=BH_CAP?Infinity:1e50*Math.pow(200,lv);
-const bhProductionBonus=()=> (1+s.bhLevel*.25)*(s.bhLevel>=5?2:1)*(s.bhLevel>=25?4:1)*(s.bhLevel>=100?10:1);
-const bhTapBonus=()=> (1+s.bhLevel*.25)*(s.bhLevel>=10?2:1)*(s.bhLevel>=50?4:1)*(s.bhLevel>=100?10:1);
+const bhCost=lv=>lv>=BH_CAP?Infinity:Math.max(1,Math.ceil(Math.pow(1.25,lv)));
+const bhProductionBonus=()=> (1+s.bhLevel*.25)*(s.bhLevel>=5?2:1)*(s.bhLevel>=25?4:1)*(s.bhLevel>=100?10:1)*ipTreeBonus('bhPower');
+const bhTapBonus=()=> (1+s.bhLevel*.25)*(s.bhLevel>=10?2:1)*(s.bhLevel>=50?4:1)*(s.bhLevel>=100?10:1)*ipTreeBonus('bhPower');
 function buyBlackHole(amount){
-  if(s.bhLevel>=BH_CAP)return;
+  if(!s.ipTree[12]||s.bhLevel>=BH_CAP)return;
   const budget=Math.max(0,Math.min(amount,BH_CAP-s.bhLevel));
   let purchased=0;
   for(let j=0;j<budget;j++){
     const c=bhCost(s.bhLevel);
-    if(!(Number.isFinite(c)&&s.dust>=c))break;
-    s.dust-=c;s.bhLevel++;s.bhInvested=Math.min(1e300,s.bhInvested+c);purchased++;
+    if(!(Number.isFinite(c)&&s.ipPoints>=c))break;
+    s.ipPoints-=c;s.bhLevel++;s.bhInvestedIP+=c;purchased++;
   }
   if(purchased){save();render();window.orbitSound?.('buy');toast('ブラックホール +'+purchased+' Lv！');}
 }
 function renderBlackHole(){
-  const lvl=s.bhLevel,c=bhCost(lvl),done=lvl>=BH_CAP,affordable=s.dust>=c;
+  const unlocked=s.ipTree[12],lvl=s.bhLevel,c=bhCost(lvl),done=lvl>=BH_CAP,affordable=unlocked&&s.ipPoints>=c;
   $('bhLevel').textContent=lvl+' / '+BH_CAP;
-  $('bhInvested').textContent=fmt(s.bhInvested);
+  $('bhInvested').textContent=fmt(s.bhInvestedIP);
   $('bhProduction').textContent='×'+fmt(bhProductionBonus());
   $('bhTap').textContent='×'+fmt(bhTapBonus());
-  $('bhStatus').textContent=done?'MAX':affordable?'成長可能！':'スターダストを集めよう';
-  $('bhCost').textContent=done?'ブラックホールの最大レベルに到達':'次の投入コスト：'+fmt(c)+' ダスト（所持 '+fmt(s.dust)+'）';
-  const pct=done?100:(s.dust>0?Math.max(0,Math.min(100,Math.log10(Math.max(1,s.dust))/Math.log10(c)*100)):0);
+  $('bhStatus').textContent=!unlocked?'ツリーで解放しよう':done?'MAX':affordable?'成長可能！':'IPを集めよう';
+  $('bhCost').textContent=!unlocked?'インフィニティツリー「深淵への入口」で解放':done?'ブラックホールの最大レベルに到達':'次の強化：'+fmt(c)+' IP（所持 '+fmt(s.ipPoints)+' IP）';
+  const pct=done?100:unlocked&&c>0?Math.max(0,Math.min(100,s.ipPoints/c*100)):0;
   $('bhFill').style.width=pct.toFixed(2)+'%';
   $('bhBuy1').disabled=!affordable||done;
   $('bhBuy10').disabled=!affordable||done;
   $('bhBuyMax').disabled=!affordable||done;
-  $('bhHint').textContent=done?'すべての成長を達成！ 永続ボーナスは引き継がれる。':'1回の成長につき次の投入コストが200倍。レベルはすべての周回を超えて残る。';
+  $('bhHint').textContent=!unlocked?'最初にインフィニティツリーでブラックホールを解放。':done?'すべての成長を達成！ 永続ボーナスは引き継がれる。':'今後のレベルアップはIPで購入。既存のレベル・ボーナスは維持される。';
   $('bhMilestoneList').innerHTML=bhMilestones.map(m=>'<div class="bhMilestone '+(lvl>=m.level?'earned':'')+'"><b>Lv.'+m.level+' '+(lvl>=m.level?'✓ ':'')+m.title+'</b><small>'+m.desc+'</small></div>').join('');
 }
 $('bhBuy1').onclick=()=>buyBlackHole(1);
@@ -694,7 +712,7 @@ $('ascCount').textContent=fmt(s.ascCount);
 $('ascInfo').textContent=ascReward()?'今アセンションすると AP +'+fmt(ascReward()):'解放まで星のかけら あと '+fmt(Math.max(0,1000-s.shards))+'（所持 '+fmt(s.shards)+'）';
 $('ascend').disabled=!ascReward();
 ascDefs.forEach((d,i)=>{$('ascLv'+i).textContent='Lv.'+s.ascUpgrades[i];$('ascBonus'+i).textContent=fmt(ascBonus(i));$('ascCost'+i).textContent=fmt(ascCost(i))+' AP';$('ascBuy'+i).disabled=s.ascPoints<ascCost(i);});
-$('ipPoints').textContent=fmt(s.ipPoints);$('ipAvailable').textContent=fmt(s.ipPoints);$('ipCount').textContent=fmt(s.ipCount);$('ipInfo').textContent=ipReward()?'今ブレイクすると IP +'+fmt(ipReward()):'ブレイクにはスターダスト 1.00e300 が必要（現在 '+fmt(s.dust)+'）';$('infinityBreak').disabled=!ipReward();$('infinityClaim').disabled=!ipReward();$('infinityClaim').textContent=ipReward()?'∞ インフィニティ +'+fmt(ipReward())+' を獲得':'∞ インフィニティを獲得';const infinityPct=s.dust<=0?0:Math.max(0,Math.min(100,(Math.log10(Math.max(1,s.dust))/300)*100));$('infinityProgressFill').style.width=infinityPct.toFixed(2)+'%';$('infinityProgressPct').textContent=infinityPct>=100?'100%':infinityPct.toFixed(infinityPct<10?2:1)+'%';$('infinityProgressText').textContent='現在 '+fmt(s.dust)+' / 必要 1.00e300';$('infinityClaimInfo').textContent=ipReward()?'インフィニティ獲得可能！':'インフィニティの必要条件：スターダスト 1e300';ipDefs.forEach((d,i)=>{$('ipLv'+i).textContent='Lv.'+s.ipUpgrades[i];$('ipBonus'+i).textContent=fmt(ipBonus(i));$('ipCost'+i).textContent=fmt(ipCost(i))+' IP';$('ipBuy'+i).disabled=s.ipPoints<ipCost(i);});
+$('ipPoints').textContent=fmt(s.ipPoints);$('ipAvailable').textContent=fmt(s.ipPoints);$('ipCount').textContent=fmt(s.ipCount);$('ipInfo').textContent=(ipReward()?'今ブレイクすると IP +'+fmt(ipReward()):'ブレイクにはスターダスト 1.00e300 が必要（現在 '+fmt(s.dust)+'）')+' ／ 現在の1回あたり上限 '+fmt(ipRewardCap())+' IP';$('infinityBreak').disabled=!ipReward();$('infinityClaim').disabled=!ipReward();$('infinityClaim').textContent=ipReward()?'∞ インフィニティ +'+fmt(ipReward())+' を獲得':'∞ インフィニティを獲得';const infinityPct=s.dust<=0?0:Math.max(0,Math.min(100,(Math.log10(Math.max(1,s.dust))/300)*100));$('infinityProgressFill').style.width=infinityPct.toFixed(2)+'%';$('infinityProgressPct').textContent=infinityPct>=100?'100%':infinityPct.toFixed(infinityPct<10?2:1)+'%';$('infinityProgressText').textContent='現在 '+fmt(s.dust)+' / 必要 1.00e300';$('infinityClaimInfo').textContent=ipReward()?'インフィニティ獲得可能！':'インフィニティの必要条件：スターダスト 1e300';ipDefs.forEach((d,i)=>{$('ipLv'+i).textContent='Lv.'+s.ipUpgrades[i];$('ipBonus'+i).textContent=fmt(ipBonus(i));$('ipCost'+i).textContent=fmt(ipCost(i))+' IP';$('ipBuy'+i).disabled=s.ipPoints<ipCost(i);});
 $('quickShards').textContent=fmt(s.shards);$('quickMulti').textContent='永続倍率 ×'+mult().toFixed(1);$('quickAP').textContent=fmt(s.ascPoints);$('quickAsc').textContent='アセンション '+fmt(s.ascCount)+' 回';$('quickIP').textContent=fmt(s.ipPoints);$('quickInf').textContent='∞ ブレイク '+fmt(s.ipCount)+' 回';$('quickRun').textContent=fmt(s.run);$('quickGoal').textContent=reward()?'転生可能':'次の転生まで '+fmt(Math.max(0,1e5-s.run));$('records').innerHTML=[['累計スターダスト',fmt(s.total)],['この周回の獲得量',fmt(s.run)],['星をタップした回数',fmt(s.taps)],['転生回数',fmt(s.resets)],['アセンション回数',fmt(s.ascCount)],['獲得したAP累計',fmt(s.ascTotal)],['インフィニティ・ブレイク',fmt(s.ipCount)],['獲得したIP累計',fmt(s.ipTotal)]].map(([a,b])=>`<div>${a}<b>${b}</b></div>`).join('');$('achievements').innerHTML=[['最初の光',s.total>=1],['自動生産スタート',s.levels.some(x=>x>0)||s.resets>0],['1万ダストの宇宙',s.total>=1e4],['はじめての転生',s.resets>0],['100万の輝き',s.total>=1e6],['10回目の新世界',s.resets>=10]].map(([a,b])=>`<div class="achievement ${b?'done':''}"><span>${a}</span><span>${b?'✓ 達成':'未達成'}</span></div>`).join('')}
 const offline=Math.min(offlineLimit(),Math.max(0,(Date.now()-s.time)/1000)),offGain=offline*rate()*offlineMultiplier();if(offline>30&&offGain>0){gain(offGain);setTimeout(()=>toast('おかえり！ 放置報酬 +'+fmt(offGain)+' ダスト'),500)}save();render();let last=Date.now();setInterval(()=>{const now=Date.now();gain(rate()*Math.min(offlineLimit(),Math.max(0,(now-last)/1000))*((now-last)>30000?offlineMultiplier():1));last=now;render()},200);setInterval(save,5000);document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});window.addEventListener('pagehide',save);
 
@@ -825,7 +843,8 @@ const offline=Math.min(offlineLimit(),Math.max(0,(Date.now()-s.time)/1000)),offG
    if(raw){for(const key of Object.keys(prefs))prefs[key]=raw[key]===true;}
  }catch{}
  function persist(){try{localStorage.setItem(KEY,JSON.stringify(prefs));}catch{}}
- function enabled(){return Object.values(prefs).some(Boolean);}
+ const gateFor=key=>key==='ascension'?!!s.ipTree[10]:key==='infinity'?!!s.ipTree[11]:!!s.ipTree[9];
+ function enabled(){return Object.keys(prefs).some(key=>prefs[key]&&gateFor(key));}
  // Calculate the entire affordable batch before applying any change. A single
  // save/render follows the batch, instead of rendering per purchased level.
  function maxBatch(available,priceForCount,maxCount=2048){
@@ -894,34 +913,35 @@ const offline=Math.min(offlineLimit(),Math.max(0,(Date.now()-s.time)/1000)),offG
  }
  function update(){
    for(const [key,id,label] of [['equipment','autoEquipment','設備'],['research','autoResearch','研究'],['buyAll','autoBuyAll','✦ 全て購入'],['ascension','autoAscension','✧ APショップ'],['infinity','autoInfinity','∞ IPショップ']]){
-     const button=$(id);button.textContent=label+' '+(prefs[key]?'ON':'OFF');button.setAttribute('aria-pressed',String(prefs[key]));
+     const button=$(id),unlocked=gateFor(key);button.disabled=!unlocked;button.textContent=label+' '+(!unlocked?'🔒':prefs[key]?'ON':'OFF');button.title=unlocked?'':'インフィニティツリーで解放';button.setAttribute('aria-pressed',String(unlocked&&prefs[key]));
    }
    const items=dustItems();
    const info=[];
-   if(prefs.equipment||prefs.research||prefs.buyAll){
+   if(s.ipTree[9]&&(prefs.equipment||prefs.research||prefs.buyAll)){
      const next=items[0];info.push(next?'ダスト次：'+next.name+'（'+fmt(next.price)+'）':'ダスト購入対象なし');
    }
-   if(prefs.ascension)info.push('AP '+fmt(s.ascPoints)+' を自動購入');
-   if(prefs.infinity)info.push('IP '+fmt(s.ipPoints)+' を自動購入');
+   if(prefs.ascension&&gateFor('ascension'))info.push('AP '+fmt(s.ascPoints)+' を自動購入');
+   if(prefs.infinity&&gateFor('infinity'))info.push('IP '+fmt(s.ipPoints)+' を自動購入');
    $('autoStatus').textContent=enabled()?info.join(' / ')+' · この起動中 '+fmt(purchased)+'レベル購入':'OFF · 項目をONにすると開始';
  }
  function tick(){
    if(document.hidden||!enabled())return;
    let count=0;
    // Each eligible type buys its maximum affordable batch in one operation.
-   if(prefs.equipment||prefs.research||prefs.buyAll){
+   if(s.ipTree[9]&&(prefs.equipment||prefs.research||prefs.buyAll)){
      for(const item of dustItems())count+=buyDustItem(item);
    }
-   if(prefs.ascension)count+=buyShop('ascPoints',ascDefs,s.ascUpgrades,ascCost);
-   if(prefs.infinity)count+=buyShop('ipPoints',ipDefs,s.ipUpgrades,ipCost);
+   if(prefs.ascension&&gateFor('ascension'))count+=buyShop('ascPoints',ascDefs,s.ascUpgrades,ascCost);
+   if(prefs.infinity&&gateFor('infinity'))count+=buyShop('ipPoints',ipDefs,s.ipUpgrades,ipCost);
    if(count){purchased+=count;save();render();}
    update();
  }
  for(const [id,key] of [['autoEquipment','equipment'],['autoResearch','research'],['autoBuyAll','buyAll'],['autoAscension','ascension'],['autoInfinity','infinity']]){
-   $(id).onclick=()=>{prefs[key]=!prefs[key];persist();update();tick();};
+   $(id).onclick=()=>{if(!gateFor(key))return;prefs[key]=!prefs[key];persist();update();tick();};
  }
  $('autoStop').onclick=()=>{for(const k of Object.keys(prefs))prefs[k]=false;persist();update();};
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)update();});
+ document.addEventListener('orbit-tree-updated',()=>{update();tick();});
  update();setInterval(tick,100);
 })();
 
